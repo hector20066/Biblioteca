@@ -17,11 +17,8 @@ public abstract class Persona {
         
     }
     
-    public void setNombre(String nombre){
+    public void setPersona(String nombre, int identificacion){
         this.nombre = nombre;
-    }
-    
-    public void setIdentificacion(int identificacion){
         this.identificacion = identificacion;
     }
     
