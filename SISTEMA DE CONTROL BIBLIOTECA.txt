@@ -1,0 +1,17 @@
+SISTEMA DE CONTROL BIBLIOTECA UNIVERSIDAD
+
+La universidad de cordoba quiere desarrollar una aplicacion que permita controlar el prestamo de libros a los estudiantes, docentes y administrativos. Cada tipo de usuario tiene reglas distintas para los prestamos. Los libros deben registrarse, prestarse y devolverse, y el sistema debe llevar una lista enlazada con los prestamos activos.
+
+Funcionalidades:
+	-Registrar un nuevo usuario
+	-Registrar un nuevo libro
+	-Realizar prestamos (si cumple con su limite de libros)
+	-Devolver libro
+	-Ver lista de prestamos activos
+	-Buscar prestamos por numero de identificacion
+	-Ordenar prestamos por numero de dias permitidos(Segun el tipo de usuario).
+
+	Limites de Prestasmos:
+		-Estudiantes: maximo 3 libros, y 7 dias
+		-Docentes: maximo 5 libros, 15 dias
+		-Administrativos: maximo 2 libros, 5 dias
