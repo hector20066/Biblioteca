@@ -10,4 +10,11 @@ package vistas;
  */
 public class Principal {
     
+    public static void main(String[]args){
+        Biblioteca vista = new Biblioteca();
+        vista.setVisible(true);
+        vista.setLocationRelativeTo(null);
+        vista.setResizable(false);
+    }
+    
 }
