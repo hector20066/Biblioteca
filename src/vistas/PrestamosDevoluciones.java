@@ -4,11 +4,18 @@
  */
 package vistas;
 
+import manejo.ListaLibros;
+import manejo.ListaPrestamos;
+import manejo.NodoPrestamos;
+
 /**
  *
  * @author Ing. Hector Acevedo
  */
 public class PrestamosDevoluciones extends javax.swing.JPanel {
+
+    ListaPrestamos listaPrestamos = ListaPrestamos.getPrestamos();
+    
 
     /**
      * Creates new form PrestamosDevoluciones
@@ -130,11 +137,20 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_prestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestarActionPerformed
-        // TODO add your handling code here:
+        try{
+            int idUsuario = Integer.parseInt(txt_idUsuario.getText());
+            int codigoLibro = Integer.parseInt(txt_codigoLibro.getText());
+            
+        }catch(Exception e){
+
+        }
     }//GEN-LAST:event_btn_prestarActionPerformed
 
     private void btn_devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_devolverActionPerformed
-        // TODO add your handling code here:
+        try {
+            
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btn_devolverActionPerformed
 
 
