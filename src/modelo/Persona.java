@@ -22,6 +22,6 @@ public abstract class Persona {
         this.identificacion = identificacion;
     }
     
-    public abstract String getTipoEstudiante();
+    public abstract String getTipoPersona();
 
 }

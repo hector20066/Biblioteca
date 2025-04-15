@@ -8,6 +8,20 @@ package modelo;
  *
  * @author Ing. Hector Acevedo
  */
-public class Estudiante {
+public class Estudiante extends Persona{
+    
+    public Estudiante(){
+        super();
+    }
+
+    public void setEstuiante(String nombre, int identificacion){
+        setPersona(nombre, identificacion);
+    }
+    
+    @Override
+    public String getTipoPersona(){
+        return "Estudiante";
+    }
+
     
 }
