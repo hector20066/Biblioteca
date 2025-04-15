@@ -5,7 +5,6 @@
 package vistas;
 
 import java.awt.BorderLayout;
-
 import javax.swing.JPanel;
 
 /**
@@ -21,6 +20,8 @@ public class Biblioteca extends javax.swing.JFrame {
      */
     public Biblioteca() {
         initComponents();
+
+        cambioPaneles(new Inicio());
     }
 
     /**
@@ -50,6 +51,7 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("BIBLIOTECA");
 
+        btn_inicio.setBackground(new java.awt.Color(30, 30, 30));
         btn_inicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_inicio.setText("INICIO");
         btn_inicio.setBorder(null);
@@ -59,6 +61,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
+        btn_registrarUsuarios.setBackground(new java.awt.Color(30, 30, 30));
         btn_registrarUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_registrarUsuarios.setText("REGISTRAR USUARIO");
         btn_registrarUsuarios.setBorder(null);
@@ -68,6 +71,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
+        btn_registrarLibros.setBackground(new java.awt.Color(30, 30, 30));
         btn_registrarLibros.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_registrarLibros.setText("REGISTRAR LIBRO");
         btn_registrarLibros.setBorder(null);
@@ -77,6 +81,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
+        btn_prestamosDevoluciones.setBackground(new java.awt.Color(30, 30, 30));
         btn_prestamosDevoluciones.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_prestamosDevoluciones.setText("PRESTAMOS Y DEVOLUCIONES");
         btn_prestamosDevoluciones.setBorder(null);
@@ -86,6 +91,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
+        btn_registroPrestamos.setBackground(new java.awt.Color(30, 30, 30));
         btn_registroPrestamos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_registroPrestamos.setText("REGISTRO DE PRESTAMOS");
         btn_registroPrestamos.setBorder(null);
@@ -95,6 +101,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
+        btn_salir.setBackground(new java.awt.Color(30, 30, 30));
         btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salir.setText("SALIR");
         btn_salir.setBorder(null);
@@ -198,27 +205,27 @@ public class Biblioteca extends javax.swing.JFrame {
     }
     
     private void btn_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicioActionPerformed
-        // TODO add your handling code here:
+        cambioPaneles(new Inicio());
     }//GEN-LAST:event_btn_inicioActionPerformed
 
     private void btn_registrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarUsuariosActionPerformed
-        // TODO add your handling code here:
+        cambioPaneles(new RegistrarUsuario());
     }//GEN-LAST:event_btn_registrarUsuariosActionPerformed
 
     private void btn_registrarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarLibrosActionPerformed
-        // TODO add your handling code here:
+        cambioPaneles(new RegistrarLibros());
     }//GEN-LAST:event_btn_registrarLibrosActionPerformed
 
     private void btn_prestamosDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamosDevolucionesActionPerformed
-        // TODO add your handling code here:
+        cambioPaneles(new PrestamosDevoluciones());
     }//GEN-LAST:event_btn_prestamosDevolucionesActionPerformed
 
     private void btn_registroPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registroPrestamosActionPerformed
-        // TODO add your handling code here:
+        cambioPaneles(new RegistroPrestamos());
     }//GEN-LAST:event_btn_registroPrestamosActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btn_salirActionPerformed
     
     /**
