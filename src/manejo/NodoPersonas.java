@@ -24,6 +24,10 @@ public class NodoPersonas {
         this.persona = persona;
     }
 
+    public void setSiguiente(NodoPersonas siguiente){
+        this.siguiente = siguiente;
+    }
+
     public Persona getPersona(){
         return persona;
     }

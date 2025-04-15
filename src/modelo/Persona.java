@@ -21,6 +21,14 @@ public abstract class Persona {
         this.nombre = nombre;
         this.identificacion = identificacion;
     }
+
+    public String nombre(){
+        return nombre;
+    }
+
+    public int getIdentificacion(){
+        return identificacion;
+    }
     
     public abstract String getTipoPersona();
 
