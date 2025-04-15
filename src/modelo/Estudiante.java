@@ -14,14 +14,9 @@ public class Estudiante extends Persona{
         super();
     }
 
-    public void setEstuiante(String nombre, int identificacion){
-        setPersona(nombre, identificacion);
-    }
-    
     @Override
     public String getTipoPersona(){
         return "Estudiante";
     }
-
     
 }

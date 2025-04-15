@@ -8,6 +8,15 @@ package modelo;
  *
  * @author Ing. Hector Acevedo
  */
-public class Administrativo {
+public class Administrativo extends Persona{
+    
+    public Administrativo(){
+        super();
+    }
+
+    @Override
+    public String getTipoPersona(){
+        return "Administrativo";
+    }
     
 }

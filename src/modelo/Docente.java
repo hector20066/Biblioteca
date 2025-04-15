@@ -8,6 +8,14 @@ package modelo;
  *
  * @author Ing. Hector Acevedo
  */
-public class Docente {
+public class Docente extends Persona{
     
+    public Docente(){
+        super();
+    }
+
+    @Override
+    public String getTipoPersona(){
+        return "Docente";
+    }
 }
