@@ -4,11 +4,21 @@
  */
 package vistas;
 
+import javax.swing.JOptionPane;
+import manejo.ListaPersona;
+import manejo.NodoPersonas;
+import modelo.Administrativo;
+import modelo.Docente;
+import modelo.Estudiante;
+import modelo.Persona;
+
 /**
  *
  * @author Ing. Hector Acevedo
  */
 public class RegistrarUsuario extends javax.swing.JPanel {
+
+    ListaPersona listaPersona = ListaPersona.getListaPersona();
 
     /**
      * Creates new form RegistrarUsuario
@@ -63,6 +73,11 @@ public class RegistrarUsuario extends javax.swing.JPanel {
         cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Docente", "Administrativo" }));
 
         btn_guardar.setText("GUARDAR");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         jtbl_reporteUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,6 +101,11 @@ public class RegistrarUsuario extends javax.swing.JPanel {
         jLabel8.setText("Identificacion:");
 
         btn_aceptar.setText("ACEPTAR");
+        btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_aceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -186,6 +206,54 @@ public class RegistrarUsuario extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void guardar(NodoPersonas nodo){
+        String nombre = txt_nombre.getText();
+        int identificacion = Integer.parseInt(txt_identificacion.getText());
+        String telefono = txt_telefono.getText();
+
+        if(cbo_tipoUsuario.getSelectedItem().equals("Estudiante")){
+            Persona estudiante = new Estudiante();
+            estudiante.setPersona(nombre, identificacion, telefono);
+            nodo.setPersona(estudiante);
+        }else{
+            if(cbo_tipoUsuario.getSelectedItem().equals("Docente")){
+                Persona docente = new Docente();
+                docente.setPersona(nombre, identificacion, telefono);
+                nodo.setPersona(docente);
+            }else{
+                if(cbo_tipoUsuario.getSelectedItem().equals("Administrativo")){
+                    Persona administrativo = new Administrativo();
+                    administrativo.setPersona(nombre, identificacion, telefono);
+                    nodo.setPersona(administrativo);
+                }
+            }
+        }
+    }
+
+    public void limpiarCampos(){
+        txt_nombre.setText("");
+        txt_identificacion.setText("");
+        cbo_tipoUsuario.setSelectedIndex(0);
+        txt_telefono.setText("");
+    }
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        try {
+            NodoPersonas nodo = new NodoPersonas();
+            guardar(nodo);
+            listaPersona.agregarNodo(nodo);
+
+            limpiarCampos();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al guardar los datos.", null, JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

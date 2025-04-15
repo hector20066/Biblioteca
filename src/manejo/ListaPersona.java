@@ -13,9 +13,18 @@ import modelo.Persona;
 public class ListaPersona {
     
     private NodoPersonas cabeza;
+    private static ListaPersona listaPersona;
 
     public ListaPersona(){
         cabeza = null;
+        listaPersona = null;
+    }
+
+    public static ListaPersona getListaPersona(){
+        if(listaPersona == null){
+            listaPersona = new ListaPersona();
+        }
+        return listaPersona;
     }
 
     public void setCabeza(NodoPersonas cabeza){

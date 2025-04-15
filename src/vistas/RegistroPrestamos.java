@@ -64,6 +64,11 @@ public class RegistroPrestamos extends javax.swing.JPanel {
         cbo_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar informacion", "Eliminar prestamo", "Eliminar todos los prestamos", "Organizar prestamos" }));
 
         btn_aceptar.setText("ACEPTAR");
+        btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_aceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,6 +138,10 @@ public class RegistroPrestamos extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -61,6 +61,11 @@ public class RegistrarLibros extends javax.swing.JPanel {
         jLabel21.setText("Autor:");
 
         btn_guardar.setText("GUARDAR");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         jtbl_reporteLibros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,6 +89,11 @@ public class RegistrarLibros extends javax.swing.JPanel {
         jLabel24.setText("Codigo:");
 
         btn_aceptar.setText("ACEPTAR");
+        btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_aceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -186,6 +196,14 @@ public class RegistrarLibros extends javax.swing.JPanel {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

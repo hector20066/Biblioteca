@@ -12,14 +12,16 @@ public abstract class Persona {
 
     protected String nombre;
     protected int identificacion;
+    protected String telefono;
     
     public Persona(){
         
     }
     
-    public void setPersona(String nombre, int identificacion){
+    public void setPersona(String nombre, int identificacion, String telefono){
         this.nombre = nombre;
         this.identificacion = identificacion;
+        this.telefono = telefono;
     }
 
     public String nombre(){
@@ -28,6 +30,10 @@ public abstract class Persona {
 
     public int getIdentificacion(){
         return identificacion;
+    }
+
+    public String getTelefono(){
+        return telefono;
     }
     
     public abstract String getTipoPersona();
