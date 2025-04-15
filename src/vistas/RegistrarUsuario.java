@@ -278,11 +278,12 @@ public class RegistrarUsuario extends javax.swing.JPanel {
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
         try {
             int opcion = cbo_opciones.getSelectedIndex();
-
+            int identificacionBuscar;
+            NodoPersonas nodo;
             switch(opcion){
                 case 0:
-                    int identificacionBuscar = Integer.parseInt(txt_identificacionOptions.getText());
-                    NodoPersonas nodo = listaPersona.buscar(identificacionBuscar);
+                    identificacionBuscar = Integer.parseInt(txt_identificacionOptions.getText());
+                    nodo = listaPersona.buscar(identificacionBuscar);
                     
                     if(nodo != null){
                         String nombre = nodo.getPersona().getNombre();
@@ -292,13 +293,24 @@ public class RegistrarUsuario extends javax.swing.JPanel {
 
                         Object listar[] = new Object[]{nombre, identificacion, telefono, tipoUsuario};
                         modelo.addRow(listar);
+                        txt_identificacionOptions.setText("");
                     }
                     break;
                 case 1:
+                    identificacionBuscar = Integer.parseInt(txt_identificacionOptions.getText());
+                    nodo = listaPersona.buscar(identificacionBuscar);
+                    if(nodo != null){
+                        listaPersona.eliminar(nodo);
+                        cargarDatosTabla();
+                        txt_identificacionOptions.setText("");
+                    }
                     break;
                 case 2:
+                    listaPersona.ordenarLista();
                     break;
                 case 3:
+                    listaPersona.eliminarLista();
+                    modelo.setRowCount(0);
                     break;
             }
         } catch (Exception e) {

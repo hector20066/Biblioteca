@@ -104,6 +104,12 @@ public class ListaPersona {
         nodo.setSiguiente(null);
     }
 
+    public void eliminarLista(){
+        while (cabeza != null) {
+            eliminar(cabeza);
+        }
+    }
+
     public void cambiar(NodoPersonas nodo1, NodoPersonas nodo2){
         NodoPersonas temp = new NodoPersonas();
         temp.compiarNodo(nodo1);
