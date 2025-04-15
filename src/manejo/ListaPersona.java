@@ -4,8 +4,6 @@
  */
 package manejo;
 
-import modelo.Persona;
-
 /**
  *
  * @author Ing. Hector Acevedo
@@ -68,14 +66,6 @@ public class ListaPersona {
     public void agregarCabeza(NodoPersonas nuevo){
         nuevo.setSiguiente(cabeza);
         setCabeza(nuevo);
-    }
-
-    public void agregarPersona(Persona persona){
-        NodoPersonas temp = cabeza;
-        while(temp != null){
-            persona = temp.getPersona();
-            temp = temp.getSiguiente();
-        }
     }
 
     public NodoPersonas buscar(int identificacion){

@@ -4,10 +4,40 @@
  */
 package manejo;
 
+import modelo.Prestamos;
+
 /**
  *
  * @author Ing. Hector Acevedo
  */
 public class NodoPrestamos {
     
+    private Prestamos prestamos;
+    private NodoPrestamos siguiente;
+
+    public NodoPrestamos(){
+        prestamos = null;
+        siguiente = null;
+    }
+
+    public void setPrestamos(Prestamos prestamos){
+        this.prestamos = prestamos;
+    }
+
+    public void setSiguiente(NodoPrestamos siguiente){
+        this.siguiente = siguiente;
+    }
+
+    public Prestamos getPrestamos(){
+        return prestamos;
+    }
+
+    public NodoPrestamos getSiguiente(){
+        return siguiente;
+    }
+
+    public void copiarNodo(NodoPrestamos nodo){
+        this.prestamos = nodo.getPrestamos();
+    }
+
 }

@@ -15,6 +15,7 @@ public class Prestamos {
     private Persona persona;
     private Libros libros;
     private LocalDate fechaPrestamo;
+    private int codigo;
 
     public Prestamos(){
         
@@ -24,8 +25,16 @@ public class Prestamos {
         this.fechaPrestamo = fechaPrestamos;
     }
 
+    public void setCodigo(int codigo){
+        this.codigo = codigo;
+    }
+
     public LocalDate getFechaPrestamo(){
         return fechaPrestamo;
+    }
+
+    public int getCodigo(){
+        return codigo;
     }
 
     public Persona getPersona(){
