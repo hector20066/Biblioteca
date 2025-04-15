@@ -5,6 +5,8 @@
 package vistas;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 import manejo.ListaPersona;
 import manejo.NodoPersonas;
 import modelo.Administrativo;
@@ -20,11 +22,18 @@ public class RegistrarUsuario extends javax.swing.JPanel {
 
     ListaPersona listaPersona = ListaPersona.getListaPersona();
 
+    DefaultTableModel modelo = new DefaultTableModel();
+
     /**
      * Creates new form RegistrarUsuario
      */
     public RegistrarUsuario() {
         initComponents();
+        String titulos[] = new String[]{"Nombre", "Identificacion", "Telefono", "Tipo de Usuario"};
+        modelo.setColumnIdentifiers(titulos);
+        jtbl_reporteUsuarios.setModel(modelo);
+
+        cargarDatosTabla();
     }
 
     /**
@@ -231,6 +240,20 @@ public class RegistrarUsuario extends javax.swing.JPanel {
         }
     }
 
+    private void cargarDatosTabla(){
+        NodoPersonas temp = listaPersona.getCabeza();
+        while(temp != null){
+            String nombre = temp.getPersona().getNombre();
+            int identificacion = temp.getPersona().getIdentificacion();
+            String telefono = temp.getPersona().getTelefono();
+            String tipoUsuario = temp.getPersona().getTipoPersona();
+
+            Object listar[] = new Object[]{nombre, identificacion, telefono, tipoUsuario};
+            modelo.addRow(listar);
+            temp = temp.getSiguiente();
+        }
+    }
+
     public void limpiarCampos(){
         txt_nombre.setText("");
         txt_identificacion.setText("");
@@ -243,7 +266,8 @@ public class RegistrarUsuario extends javax.swing.JPanel {
             NodoPersonas nodo = new NodoPersonas();
             guardar(nodo);
             listaPersona.agregarNodo(nodo);
-
+            cargarDatosTabla();
+            JOptionPane.showMessageDialog(null, "Los datos han sido guardados correctamente.", null, JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
         } catch (Exception e) {
             e.printStackTrace();
@@ -252,7 +276,33 @@ public class RegistrarUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-        // TODO add your handling code here:
+        try {
+            int opcion = cbo_opciones.getSelectedIndex();
+
+            switch(opcion){
+                case 0:
+                    int identificacionBuscar = Integer.parseInt(txt_identificacionOptions.getText());
+                    NodoPersonas nodo = listaPersona.buscar(identificacionBuscar);
+                    
+                    if(nodo != null){
+                        String nombre = nodo.getPersona().getNombre();
+                        int identificacion = nodo.getPersona().getIdentificacion();
+                        String telefono = nodo.getPersona().getTelefono();
+                        String tipoUsuario = nodo.getPersona().getTipoPersona();
+
+                        Object listar[] = new Object[]{nombre, identificacion, telefono, tipoUsuario};
+                        modelo.addRow(listar);
+                    }
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btn_aceptarActionPerformed
 
 

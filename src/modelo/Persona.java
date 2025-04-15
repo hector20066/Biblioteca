@@ -24,7 +24,7 @@ public abstract class Persona {
         this.telefono = telefono;
     }
 
-    public String nombre(){
+    public String getNombre(){
         return nombre;
     }
 

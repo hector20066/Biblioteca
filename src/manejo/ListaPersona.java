@@ -31,7 +31,7 @@ public class ListaPersona {
         this.cabeza = cabeza;
     }
 
-    public NodoPersonas getPersona(){
+    public NodoPersonas getCabeza(){
         return cabeza;
     }
 
