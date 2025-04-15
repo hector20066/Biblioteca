@@ -51,7 +51,9 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("BIBLIOTECA");
 
-        btn_inicio.setBackground(new java.awt.Color(30, 30, 30));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        btn_inicio.setBackground(new java.awt.Color(255, 255, 255));
         btn_inicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_inicio.setText("INICIO");
         btn_inicio.setBorder(null);
@@ -61,7 +63,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
-        btn_registrarUsuarios.setBackground(new java.awt.Color(30, 30, 30));
+        btn_registrarUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         btn_registrarUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_registrarUsuarios.setText("REGISTRAR USUARIO");
         btn_registrarUsuarios.setBorder(null);
@@ -71,7 +73,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
-        btn_registrarLibros.setBackground(new java.awt.Color(30, 30, 30));
+        btn_registrarLibros.setBackground(new java.awt.Color(255, 255, 255));
         btn_registrarLibros.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_registrarLibros.setText("REGISTRAR LIBRO");
         btn_registrarLibros.setBorder(null);
@@ -81,7 +83,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
-        btn_prestamosDevoluciones.setBackground(new java.awt.Color(30, 30, 30));
+        btn_prestamosDevoluciones.setBackground(new java.awt.Color(255, 255, 255));
         btn_prestamosDevoluciones.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_prestamosDevoluciones.setText("PRESTAMOS Y DEVOLUCIONES");
         btn_prestamosDevoluciones.setBorder(null);
@@ -91,7 +93,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
-        btn_registroPrestamos.setBackground(new java.awt.Color(30, 30, 30));
+        btn_registroPrestamos.setBackground(new java.awt.Color(255, 255, 255));
         btn_registroPrestamos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_registroPrestamos.setText("REGISTRO DE PRESTAMOS");
         btn_registroPrestamos.setBorder(null);
@@ -101,7 +103,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
-        btn_salir.setBackground(new java.awt.Color(30, 30, 30));
+        btn_salir.setBackground(new java.awt.Color(255, 255, 255));
         btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salir.setText("SALIR");
         btn_salir.setBorder(null);
