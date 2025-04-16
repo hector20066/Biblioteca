@@ -18,7 +18,7 @@ public class ListaLibros {
         listaLibros = null;
     }
 
-    public static ListaLibros geListaLibros() {
+    public static ListaLibros getListaLibros() {
         if (listaLibros == null) {
             listaLibros = new ListaLibros();
         }

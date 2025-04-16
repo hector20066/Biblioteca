@@ -16,7 +16,7 @@ import modelo.Libros;
  */
 public class RegistrarLibros extends javax.swing.JPanel {
 
-    ListaLibros listaLibros = ListaLibros.geListaLibros();
+    ListaLibros listaLibros = ListaLibros.getListaLibros();
     
     DefaultTableModel modelo = new DefaultTableModel();
 

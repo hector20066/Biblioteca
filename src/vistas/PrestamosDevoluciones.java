@@ -4,9 +4,11 @@
  */
 package vistas;
 
-import manejo.ListaLibros;
-import manejo.ListaPrestamos;
-import manejo.NodoPrestamos;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
+import manejo.*;
+import manejo.*;
+import modelo.Prestamos;
 
 /**
  *
@@ -14,9 +16,10 @@ import manejo.NodoPrestamos;
  */
 public class PrestamosDevoluciones extends javax.swing.JPanel {
 
+    ListaLibros listaLibros = ListaLibros.getListaLibros();
+    ListaPersona listaPersonas = ListaPersona.getListaPersona();
     ListaPrestamos listaPrestamos = ListaPrestamos.getPrestamos();
     
-
     /**
      * Creates new form PrestamosDevoluciones
      */
@@ -43,6 +46,8 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
         txt_codigoLibro = new javax.swing.JTextField();
         btn_prestar = new javax.swing.JButton();
         btn_devolver = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txt_codigoPrestamos = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -68,6 +73,8 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setText("Codigo Prestamo:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -91,7 +98,11 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_codigoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txt_codigoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_codigoPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(364, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -117,11 +128,15 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txt_codigoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txt_codigoPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_prestar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_devolver, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -136,13 +151,60 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void limpiarCampos(){
+        txt_codigoLibro.setText("");
+        txt_codigoPrestamos.setText("");
+        txt_idUsuario.setText("");
+    }
     private void btn_prestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestarActionPerformed
         try{
+            int codigoPrestamo = Integer.parseInt(txt_codigoPrestamos.getText());
             int idUsuario = Integer.parseInt(txt_idUsuario.getText());
             int codigoLibro = Integer.parseInt(txt_codigoLibro.getText());
             
-        }catch(Exception e){
+            //Instancia de los Nodos
+            NodoPersonas nodoPersonas = listaPersonas.buscar(idUsuario);
+            NodoLibros nodoLibros = listaLibros.buscarPorCodigo(codigoLibro);
+            NodoPrestamos nodoPrestamos;
+            //Instancia de la clase Prestamos
+            Prestamos prestamos;
+            
+            LocalDate fecha = LocalDate.now();
+            
+            if(listaPrestamos.verificarExistencia(codigoLibro, idUsuario) == false){
+                if((nodoPersonas != null && nodoLibros != null)){
 
+                    int cantLibros = nodoLibros.getLibros().getCantidad();
+
+                    if(cantLibros > 0){
+                        nodoPrestamos = new NodoPrestamos();
+                        int nuevaCantidad;
+
+                        prestamos = new Prestamos();
+                        prestamos.setIdPersona(idUsuario);
+                        prestamos.setIdLibro(codigoLibro);
+                        prestamos.setCodigo(codigoPrestamo);
+                        prestamos.setFechaPrestamos(fecha);
+
+                        nodoPrestamos.setPrestamos(prestamos);
+                        listaPrestamos.agragarPrestamo(nodoPrestamos);
+
+                        nuevaCantidad = cantLibros -1;
+                        nodoLibros.getLibros().setCantidad(nuevaCantidad);
+                        
+                        limpiarCampos();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Este libro no esta disponible para prestar, Espere que otro usuario lo devuelva", null, JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se encontro el usuario con esta identificacion o el libro con ese codigo", null, JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Este usuario ya ha prestado este libro", null, JOptionPane.ERROR_MESSAGE);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Ha ocurrido un error al tratar de prestar el libro");
         }
     }//GEN-LAST:event_btn_prestarActionPerformed
 
@@ -161,9 +223,11 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField txt_codigoLibro;
+    private javax.swing.JTextField txt_codigoPrestamos;
     private javax.swing.JTextField txt_idUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,8 +12,8 @@ import java.time.LocalDate;
  */
 public class Prestamos {
     
-    private Persona persona;
-    private Libros libros;
+    private int idPersona;
+    private int idLibro;
     private LocalDate fechaPrestamo;
     private int codigo;
 
@@ -21,6 +21,14 @@ public class Prestamos {
         
     }
 
+    public void setIdPersona(int idPersona){
+        this.idPersona = idPersona;
+    }
+    
+    public void setIdLibro(int idLibro){
+        this.idLibro = idLibro;
+    }
+    
     public void setFechaPrestamos(LocalDate fechaPrestamos){
         this.fechaPrestamo = fechaPrestamos;
     }
@@ -37,12 +45,12 @@ public class Prestamos {
         return codigo;
     }
 
-    public Persona getPersona(){
-        return persona;
+    public int getIdPersona(){
+        return idPersona;
     }
 
-    public Libros getLibros(){
-        return libros;
+    public int getIdLibros(){
+        return idLibro;
     }
 
 }

@@ -148,5 +148,16 @@ public class ListaPrestamos {
             }
         }
     }
+    
+    public boolean verificarExistencia(int idLibro, int idPersona){
+        NodoPrestamos temp = cabeza;
+        while(temp != null){
+            if((temp.getPrestamos().getIdLibros() == idLibro) && (temp.getPrestamos().getIdPersona() == idPersona)){
+                return true;
+            }
+            temp = temp.getSiguiente();
+        }
+        return false;
+    }
 
 }
