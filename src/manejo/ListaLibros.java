@@ -115,7 +115,8 @@ public class ListaLibros {
     }
 
     public void ordenarListaPorTitulo() {
-        NodoLibros ni, nj;
+        NodoLibros ni, 
+        NodoLibros nj;
         ni = cabeza;
         while(ni != null){
             nj = ni.getSiguiente();
@@ -128,6 +129,8 @@ public class ListaLibros {
             ni = ni.getSiguiente();
         }
     }
+
+    public 
 
 
 
