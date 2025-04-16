@@ -4,10 +4,42 @@
  */
 package manejo;
 
+import modelo.Libros;
+
+
 /**
  *
  * @author Ing. Hector Acevedo
  */
 public class NodoLibros {
     
+    private Libros libros;
+    private NodoLibros siguiente;
+
+    public NodoLibros() {
+        libros = null;
+        siguiente = null;
+    }
+
+    public void setLibros(Libros libro) {
+        this.libros = libro;
+    }
+
+    public void setSiguiente(NodoLibros siguiente) {
+        this.siguiente = siguiente;
+    }
+
+    public Libros getLibros() {
+        return libros;
+    }
+
+    public NodoLibros getSiguiente() {
+        return siguiente;
+    }
+
+    public void copiarNodo(NodoLibros nodo) {
+        this.libros = nodo.getLibros();
+    }
+
+
 }
