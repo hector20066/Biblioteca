@@ -98,6 +98,37 @@ public class ListaLibros {
             }
             anterior.setSiguiente(nodo.getSiguiente());
         }
-    nodo.setSiguiente(null);
+        nodo.setSiguiente(null);
+    }
+
+    public void eliminarLista() {
+        while(cabeza != null){
+            eliminar(cabeza);
+        }
+    }
+
+    public void cambiar(NodoLibros nodo1, NodoLibros nodo2) {
+        NodoLibros temp = new NodoLibros();
+        temp.copiarNodo(nodo1);
+        nodo1.copiarNodo(nodo2);
+        nodo2.copiarNodo(temp);
+    }
+
+    public void ordenarListaPorTitulo() {
+        NodoLibros ni, nj;
+        ni = cabeza;
+        while(ni != null){
+            nj = ni.getSiguiente();
+            while(nj != null){
+                if(ni.getLibros().getTitulo().compareTo(nj.getLibros().getTitulo()) > 0){
+                    cambiar(ni, nj);
+                }
+                nj = nj.getSiguiente();
+            }
+            ni = ni.getSiguiente();
+        }
+    }
+
+
 
 }
