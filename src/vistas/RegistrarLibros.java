@@ -4,17 +4,33 @@
  */
 package vistas;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import manejo.ListaLibros;
+import manejo.*;
+import modelo.Libros;
+
 /**
  *
  * @author Ing. Hector Acevedo
  */
 public class RegistrarLibros extends javax.swing.JPanel {
 
+    ListaLibros listaLibros = ListaLibros.geListaLibros();
+    
+    DefaultTableModel modelo = new DefaultTableModel();
+
     /**
      * Creates new form RegistrarLibros
      */
     public RegistrarLibros() {
         initComponents();
+        String titulo[] = new String[]{"TITULO", "CODIGO", "AUTOR", "CANTIDAD DISPONIBLE"};
+        modelo.setColumnIdentifiers(titulo);
+        jtbl_reporteLibros.setModel(modelo);
+
+        cargarDatos(); //Metodo para cargar los datos en la tabla
+
     }
 
     /**
@@ -196,9 +212,62 @@ public class RegistrarLibros extends javax.swing.JPanel {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void cargarDatos(){
+        NodoLibros nodo = listaLibros.getCabeza();
+        modelo.setRowCount(0);
+        while(nodo != null){
+            String titulo = nodo.getLibros().getTitulo();
+            int codigo = nodo.getLibros().getCodigo();
+            String autor = nodo.getLibros().getAutor();
+            int cantidad = nodo.getLibros().getCantidad();
+
+            Object listar[] = new Object[]{titulo, codigo, autor, cantidad};
+            modelo.addRow(listar);
+
+            nodo = nodo.getSiguiente();
+        }
+    }
+
+    private void llenar(NodoLibros nodo) {
+        String titulo = txt_titulo.getText();
+        int codigo = Integer.parseInt(txt_codigo.getText());
+        String autor = txt_autor.getText();
+        int cantidad = Integer.parseInt(txt_cantDisponible.getText());
+        
+        Libros libro;
+
+        if(listaLibros.verficarCodigo(codigo) == false){
+            libro = new Libros();
+            libro.setCodigo(codigo);
+            libro.setTitulo(titulo);
+            libro.setAutor(autor);
+            libro.setCantidad(cantidad);
+            nodo.setLibros(libro);
+        }else{
+            JOptionPane.showMessageDialog(null, "Ya existe un libro con este codigo", null, JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void limpiarCampos() {
+        txt_autor.setText("");
+        txt_codigo.setText("");
+        txt_cantDisponible.setText("");
+        txt_titulo.setText("");
+    }
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        // TODO add your handling code here:
+        try{
+            NodoLibros nodo = new NodoLibros();
+
+            llenar(nodo);
+            listaLibros.agregarNodo(nodo);
+            listaLibros.ordenarListaPorCodigo();
+            cargarDatos();
+            limpiarCampos();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed

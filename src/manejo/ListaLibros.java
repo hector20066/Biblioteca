@@ -55,6 +55,18 @@ public class ListaLibros {
         return contador;
     }
 
+    public boolean verficarCodigo(int codigo){
+        NodoLibros temp = cabeza;
+        while(temp != null){
+            if(temp.getLibros().getCodigo() == codigo){
+                return true;
+            }else{
+                temp = temp.getSiguiente();
+            }
+        }
+        return false;
+    }
+    
     public void agregarNodo(NodoLibros nuevo) {
         if(cabeza == null){
             setCabeza(nuevo);
@@ -115,7 +127,7 @@ public class ListaLibros {
     }
 
     public void ordenarListaPorTitulo() {
-        NodoLibros ni, 
+        NodoLibros ni;
         NodoLibros nj;
         ni = cabeza;
         while(ni != null){
@@ -130,8 +142,20 @@ public class ListaLibros {
         }
     }
 
-    public 
-
-
+    public void ordenarListaPorCodigo() {
+        NodoLibros ni;
+        NodoLibros nj;
+        ni = cabeza;
+        while(ni != null){
+            nj = ni.getSiguiente();
+            while(nj != null){
+                if(ni.getLibros().getCodigo() > nj.getLibros().getCodigo()){
+                    cambiar(ni, nj);
+                }
+                nj = nj.getSiguiente();
+            }
+            ni = ni.getSiguiente();
+        }
+    }
 
 }
