@@ -235,18 +235,13 @@ public class RegistrarLibros extends javax.swing.JPanel {
         String autor = txt_autor.getText();
         int cantidad = Integer.parseInt(txt_cantDisponible.getText());
         
-        Libros libro;
+        Libros libro = new Libros();
 
-        if(listaLibros.verficarCodigo(codigo) == false){
-            libro = new Libros();
-            libro.setCodigo(codigo);
-            libro.setTitulo(titulo);
-            libro.setAutor(autor);
-            libro.setCantidad(cantidad);
-            nodo.setLibros(libro);
-        }else{
-            JOptionPane.showMessageDialog(null, "Ya existe un libro con este codigo", null, JOptionPane.ERROR_MESSAGE);
-        }
+        libro.setCodigo(codigo);
+        libro.setTitulo(titulo);
+        libro.setAutor(autor);
+        libro.setCantidad(cantidad);
+        nodo.setLibros(libro);
     }
 
     private void limpiarCampos() {
@@ -258,13 +253,20 @@ public class RegistrarLibros extends javax.swing.JPanel {
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         try{
-            NodoLibros nodo = new NodoLibros();
+            int codigoLibro = Integer.parseInt(txt_codigo.getText());
+            if(listaLibros.verficarCodigo(codigoLibro) == false){
 
-            llenar(nodo);
-            listaLibros.agregarNodo(nodo);
-            listaLibros.ordenarListaPorCodigo();
-            cargarDatos();
-            limpiarCampos();
+                NodoLibros nodo = new NodoLibros();
+
+                llenar(nodo);
+                listaLibros.agregarNodo(nodo);
+                listaLibros.ordenarListaPorCodigo();
+                cargarDatos();
+                limpiarCampos();
+            }else{
+                JOptionPane.showMessageDialog(null, "Ya hay un libro registrado con este codigo", null, JOptionPane.ERROR_MESSAGE);
+                txt_codigo.grabFocus();
+            }
         }catch(Exception e) {
             e.printStackTrace();
         }
