@@ -16,6 +16,7 @@ public class Prestamos {
     private int idLibro;
     private LocalDate fechaPrestamo;
     private int codigo;
+    private boolean activo;
 
     public Prestamos(){
         
@@ -36,6 +37,10 @@ public class Prestamos {
     public void setCodigo(int codigo){
         this.codigo = codigo;
     }
+    
+    public void setActivo(boolean activo){
+        this.activo = activo;
+    }
 
     public LocalDate getFechaPrestamo(){
         return fechaPrestamo;
@@ -51,6 +56,10 @@ public class Prestamos {
 
     public int getIdLibros(){
         return idLibro;
+    }
+    
+    public boolean getActivo(){
+        return activo;
     }
 
 }
