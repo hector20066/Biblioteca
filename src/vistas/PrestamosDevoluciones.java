@@ -185,12 +185,15 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
                         prestamos.setIdLibro(codigoLibro);
                         prestamos.setCodigo(codigoPrestamo);
                         prestamos.setFechaPrestamos(fecha);
+                        prestamos.setActivo(true);
 
                         nodoPrestamos.setPrestamos(prestamos);
                         listaPrestamos.agragarPrestamo(nodoPrestamos);
 
                         nuevaCantidad = cantLibros -1;
                         nodoLibros.getLibros().setCantidad(nuevaCantidad);
+
+                        JOptionPane.showMessageDialog(null, "Se ha realizado el prestamo del libro " + nodoLibros.getLibros().getTitulo() + " al usuario " + nodoPersonas.getPersona().getNombre(), null, JOptionPane.INFORMATION_MESSAGE);
                         
                         limpiarCampos();
                     }else{
@@ -210,8 +213,28 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
 
     private void btn_devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_devolverActionPerformed
         try {
+            int codigoLibro = Integer.parseInt(txt_codigoLibro.getText());
+            int idUsuario = Integer.parseInt(txt_idUsuario.getText());
             
+            NodoPersonas nodoPersonas = listaPersonas.buscar(idUsuario);
+            NodoLibros nodoLibros = listaLibros.buscarPorCodigo(codigoLibro);
+            NodoPrestamos nodoPrestamos =listaPrestamos.buscarPrestamo(codigoLibro, idUsuario);
+
+            if(nodoPrestamos != null && nodoPrestamos.getPrestamos().getActivo() == true){
+                nodoPrestamos.getPrestamos().setActivo(false);
+
+                int cantidad = nodoLibros.getLibros().getCantidad();
+                nodoLibros.getLibros().setCantidad(cantidad + 1);
+
+                JOptionPane.showMessageDialog(null, "Se ha devuelto el libro " + nodoLibros.getLibros().getTitulo() + "\nque se encontraba en posesion del usuario " + nodoPersonas.getPersona().getNombre(), null, JOptionPane.INFORMATION_MESSAGE);
+                
+                limpiarCampos();
+            }else{
+                JOptionPane.showMessageDialog(null, "No se encontro el prestamo de este libro", null, JOptionPane.ERROR_MESSAGE);
+            }
         } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Ha ocurrido un error al hacer la funcion de devolver el libro");
         }
     }//GEN-LAST:event_btn_devolverActionPerformed
 

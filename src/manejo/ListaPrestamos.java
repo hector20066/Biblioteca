@@ -91,6 +91,18 @@ public class ListaPrestamos {
         return nodo;
     }
 
+    public NodoPrestamos buscarPrestamo(int idLibro, int idPersona){
+        NodoPrestamos nodo = cabeza;
+        while(nodo != null){
+            if((nodo.getPrestamos().getIdLibros() == idLibro) && (nodo.getPrestamos().getIdPersona() == idPersona)){
+                break;
+            }else{
+                nodo = nodo.getSiguiente();
+            }
+        }
+        return nodo;
+    }
+
     public void eliminar(NodoPrestamos nodo){
         NodoPrestamos anterior;
         if(nodo == cabeza){
