@@ -217,11 +217,13 @@
         <Component class="javax.swing.JComboBox" name="cbo_opciones">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Buscar libro"/>
-                <StringItem index="1" value="Eliminar libro"/>
-                <StringItem index="2" value="Ordenar Lista"/>
-                <StringItem index="3" value="Eliminar toda la informacion"/>
+              <StringArray count="6">
+                <StringItem index="0" value="Buscar libro por codigo"/>
+                <StringItem index="1" value="Buscar libro por titulo"/>
+                <StringItem index="2" value="Eliminar libro"/>
+                <StringItem index="3" value="Ordenar Lista por codigos"/>
+                <StringItem index="4" value="Ordenar lista por titulos"/>
+                <StringItem index="5" value="Eliminar toda la informacion"/>
               </StringArray>
             </Property>
           </Properties>
@@ -231,7 +233,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel24">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Codigo:"/>
+            <Property name="text" type="java.lang.String" value="Codigo/Titulo:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_codigoOptions">

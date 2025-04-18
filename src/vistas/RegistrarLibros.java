@@ -100,9 +100,9 @@ public class RegistrarLibros extends javax.swing.JPanel {
 
         jLabel23.setText("Libros registrados");
 
-        cbo_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar libro", "Eliminar libro", "Ordenar Lista", "Eliminar toda la informacion" }));
+        cbo_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar libro por codigo", "Buscar libro por titulo", "Eliminar libro", "Ordenar Lista por codigos", "Ordenar lista por titulos", "Eliminar toda la informacion" }));
 
-        jLabel24.setText("Codigo:");
+        jLabel24.setText("Codigo/Titulo:");
 
         btn_aceptar.setText("ACEPTAR");
         btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -273,7 +273,7 @@ public class RegistrarLibros extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_aceptarActionPerformed
 
 
