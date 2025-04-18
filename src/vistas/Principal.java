@@ -4,6 +4,8 @@
  */
 package vistas;
 
+import com.formdev.flatlaf.FlatLightLaf;
+
 /**
  *
  * @author Ing. Hector Acevedo
@@ -11,6 +13,15 @@ package vistas;
 public class Principal {
     
     public static void main(String[]args){
+        
+        //Se carga el tema FlatLaf
+        try{
+            FlatLightLaf.setup();
+        }catch(Exception ex){
+            System.out.println("Fallo al cargar FlatLat");
+        }
+        
+        //Se instancia la vista principal de programa
         Biblioteca vista = new Biblioteca();
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
