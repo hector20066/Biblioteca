@@ -16,6 +16,7 @@ public class Principal {
         
         //Se carga el tema FlatLaf
         try{
+            //Se usa el tema FlatLightLaf
             FlatLightLaf.setup();
         }catch(Exception ex){
             System.out.println("Fallo al cargar FlatLat");
