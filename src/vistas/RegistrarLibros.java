@@ -4,7 +4,7 @@
  */
 package vistas;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
 
@@ -249,6 +249,42 @@ public class RegistrarLibros extends javax.swing.JPanel {
         txt_codigo.setText("");
         txt_cantDisponible.setText("");
         txt_titulo.setText("");
+    }
+    
+    public JButton getBtn_guardar(){
+        return btn_guardar;
+    }
+    
+    public JButton getBtn_aceptar(){
+        return btn_aceptar;
+    }
+    
+    public JComboBox getCbo_opciones(){
+        return cbo_opciones;
+    }
+    
+    public JTextField getTxt_autor(){
+        return txt_autor;
+    }
+    
+    public JTextField getTxt_cantDisponible(){
+        return txt_cantDisponible;
+    }
+    
+    public JTextField getTxt_codigo(){
+        return txt_codigo;
+    }
+    
+    public JTextField getTxt_codigoOpciones(){
+        return txt_codigoOptions;
+    }
+    
+    public JTextField getTxt_titulo(){
+        return txt_titulo;
+    }
+    
+    public DefaultTableModel getModelo(){
+        return modelo;
     }
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed

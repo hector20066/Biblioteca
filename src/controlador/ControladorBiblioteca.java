@@ -15,9 +15,18 @@ import vistas.*;
 public class ControladorBiblioteca implements ActionListener{
     
     private Biblioteca biblioteca;
+    private PrestamosDevoluciones prestamosDevoluciones;
+    private RegistrarUsuario registrarUsuarios;
+    private RegistrarLibros registrarLibros;
+    private RegistroPrestamos registroPrestamos;
 
-    public ControladorBiblioteca(Biblioteca biblioteca){
+    public ControladorBiblioteca(Biblioteca biblioteca, PrestamosDevoluciones prestamosDevoluciones, RegistrarUsuario registrarUsuario, RegistrarLibros registrarLibros, RegistroPrestamos registroPrestamos){
         this.biblioteca = biblioteca;
+        this.prestamosDevoluciones = prestamosDevoluciones;
+        this.registrarUsuarios = registrarUsuario;
+        this.registrarLibros = registrarLibros;
+        this.registroPrestamos = registroPrestamos;
+        
         this.biblioteca.getBtn_inicio().addActionListener(this);
         this.biblioteca.getBtn_prestamosDevoluciones().addActionListener(this);
         this.biblioteca.getBtn_registrarLibros().addActionListener(this);
@@ -32,16 +41,16 @@ public class ControladorBiblioteca implements ActionListener{
             biblioteca.cambioPaneles(new Inicio());
         }else{
             if(evento.getSource() == biblioteca.getBtn_prestamosDevoluciones()){
-                biblioteca.cambioPaneles(new PrestamosDevoluciones());
+                biblioteca.cambioPaneles(prestamosDevoluciones);
             }else{
                 if (evento.getSource() == biblioteca.getBtn_registrarLibros()) {
-                    biblioteca.cambioPaneles(new RegistrarLibros());
+                    biblioteca.cambioPaneles(registrarLibros);
                 }else{
                     if (evento.getSource() == biblioteca.getBtn_registrarUsuarios()) {
-                        biblioteca.cambioPaneles(new RegistrarUsuario());
+                        biblioteca.cambioPaneles(registrarUsuarios);
                     }else{
                         if(evento.getSource() == biblioteca.getBtn_registroPrestamos()){
-                            biblioteca.cambioPaneles(new RegistroPrestamos());
+                            biblioteca.cambioPaneles(registroPrestamos);
                         }else{
                             if(evento.getSource() == biblioteca.getBtn_salir()){
                                 System.exit(0);

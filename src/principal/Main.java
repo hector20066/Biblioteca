@@ -32,9 +32,12 @@ public class Main {
         //Instancias de las vistas del programa
         Biblioteca vista = new Biblioteca();
         PrestamosDevoluciones prestamosDevoluciones = new PrestamosDevoluciones();
+        RegistrarLibros registrarLibros = new RegistrarLibros();
+        RegistrarUsuario registrarUsuarios = new RegistrarUsuario();
+        RegistroPrestamos registroPrestamos = new RegistroPrestamos();
 
         //Se crean los controladores del programa
-        new ControladorBiblioteca(vista);
+        new ControladorBiblioteca(vista, prestamosDevoluciones, registrarUsuarios, registrarLibros, registroPrestamos);
         new ControladorPrestamosDevoluciones(prestamosDevoluciones);
         
         vista.setVisible(true);
