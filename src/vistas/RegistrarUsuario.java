@@ -7,12 +7,7 @@ package vistas;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import manejo.ListaPersona;
-import manejo.NodoPersonas;
-import modelo.Administrativo;
-import modelo.Docente;
-import modelo.Estudiante;
-import modelo.Persona;
+import modelo.*;
 
 /**
  *

@@ -6,9 +6,7 @@ package vistas;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import manejo.ListaLibros;
-import manejo.*;
-import modelo.Libros;
+import modelo.*;
 
 /**
  *

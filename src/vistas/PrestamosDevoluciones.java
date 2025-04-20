@@ -6,9 +6,7 @@ package vistas;
 
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import manejo.*;
-import manejo.*;
-import modelo.Prestamos;
+import modelo.*;
 
 /**
  *
