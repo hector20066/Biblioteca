@@ -24,7 +24,6 @@ public class Principal {
             FlatIntelliJLaf.setup();
             
             // Otros temas de FlatLaf
-            // FlatLightLaf.setup();
             // FlatDarkLaf.setup();
             // FlatDarculaLaf.setup();
             // FlatLightLaf.setup();
