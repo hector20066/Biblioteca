@@ -2,22 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package vistas;
+package principal;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import controlador.*;
+import vistas.*;
 
 /**
  *
- * @author Ing. Hector Acevedo
+ * @author Mi PC
  */
-public class Principal {
+public class Main {
     
-    /**
-     * Metodo principal del programa, se cargan los temas y las ventanas del proyecto
-     * @param args 
-     */
     public static void main(String[]args){
-        
         //Se carga el tema FlatLaf
         try{
             //Se usa el tema FlatLightLaf
@@ -32,11 +29,16 @@ public class Principal {
             System.out.println("Fallo al cargar FlatLat");
         }
         
-        //Se instancia la vista principal de programa
+        //Instancias de las vistas del programa
         Biblioteca vista = new Biblioteca();
+        PrestamosDevoluciones prestamosDevoluciones = new PrestamosDevoluciones();
+
+        //Se crean los controladores del programa
+        new ControladorBiblioteca(vista);
+        new ControladorPrestamosDevoluciones(prestamosDevoluciones);
+        
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
         vista.setResizable(false);
     }
-    
 }

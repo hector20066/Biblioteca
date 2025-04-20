@@ -5,6 +5,7 @@
 package vistas;
 
 import java.awt.BorderLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -12,8 +13,6 @@ import javax.swing.JPanel;
  * @author Ing. Hector Acevedo
  */
 public class Biblioteca extends javax.swing.JFrame {
-
-    //Margenes del panel contenedor 780, 420
     
     /**
      * Creates new form Biblioteca
@@ -60,61 +59,31 @@ public class Biblioteca extends javax.swing.JFrame {
         btn_inicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_inicio.setText("INICIO");
         btn_inicio.setBorder(null);
-        btn_inicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_inicioActionPerformed(evt);
-            }
-        });
 
         btn_registrarUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         btn_registrarUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_registrarUsuarios.setText("REGISTRAR USUARIO");
         btn_registrarUsuarios.setBorder(null);
-        btn_registrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_registrarUsuariosActionPerformed(evt);
-            }
-        });
 
         btn_registrarLibros.setBackground(new java.awt.Color(255, 255, 255));
         btn_registrarLibros.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_registrarLibros.setText("REGISTRAR LIBRO");
         btn_registrarLibros.setBorder(null);
-        btn_registrarLibros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_registrarLibrosActionPerformed(evt);
-            }
-        });
 
         btn_prestamosDevoluciones.setBackground(new java.awt.Color(255, 255, 255));
         btn_prestamosDevoluciones.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_prestamosDevoluciones.setText("PRESTAMOS Y DEVOLUCIONES");
         btn_prestamosDevoluciones.setBorder(null);
-        btn_prestamosDevoluciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_prestamosDevolucionesActionPerformed(evt);
-            }
-        });
 
         btn_registroPrestamos.setBackground(new java.awt.Color(255, 255, 255));
         btn_registroPrestamos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_registroPrestamos.setText("REGISTRO DE PRESTAMOS");
         btn_registroPrestamos.setBorder(null);
-        btn_registroPrestamos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_registroPrestamosActionPerformed(evt);
-            }
-        });
 
         btn_salir.setBackground(new java.awt.Color(255, 255, 255));
         btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salir.setText("SALIR");
         btn_salir.setBorder(null);
-        btn_salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_salirActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -211,64 +180,29 @@ public class Biblioteca extends javax.swing.JFrame {
         jpl_contenedor.revalidate();
         jpl_contenedor.repaint();
     }
-    
-    private void btn_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicioActionPerformed
-        cambioPaneles(new Inicio());
-    }//GEN-LAST:event_btn_inicioActionPerformed
 
-    private void btn_registrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarUsuariosActionPerformed
-        cambioPaneles(new RegistrarUsuario());
-    }//GEN-LAST:event_btn_registrarUsuariosActionPerformed
+    public JButton getBtn_inicio(){
+        return btn_inicio;
+    }
 
-    private void btn_registrarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarLibrosActionPerformed
-        cambioPaneles(new RegistrarLibros());
-    }//GEN-LAST:event_btn_registrarLibrosActionPerformed
+    public JButton getBtn_prestamosDevoluciones(){
+        return btn_prestamosDevoluciones;
+    }
 
-    private void btn_prestamosDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamosDevolucionesActionPerformed
-        cambioPaneles(new PrestamosDevoluciones());
-    }//GEN-LAST:event_btn_prestamosDevolucionesActionPerformed
+    public JButton getBtn_registrarLibros(){
+        return btn_registrarLibros;
+    }
 
-    private void btn_registroPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registroPrestamosActionPerformed
-        cambioPaneles(new RegistroPrestamos());
-    }//GEN-LAST:event_btn_registroPrestamosActionPerformed
+    public JButton getBtn_registrarUsuarios(){
+        return btn_registrarUsuarios;
+    }
 
-    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btn_salirActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Biblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Biblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Biblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Biblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    public JButton getBtn_registroPrestamos(){
+        return btn_registroPrestamos;
+    }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Biblioteca().setVisible(true);
-            }
-        });
+    public JButton getBtn_salir(){
+        return btn_salir;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -66,7 +66,7 @@ public class ListaPrestamos {
         return false;
     }
 
-    public void agragarPrestamo(NodoPrestamos nuevo){
+    public void agregarPrestamo(NodoPrestamos nuevo){
         if(cabeza == null){
             setCabeza(nuevo);
         }else{

@@ -142,9 +142,6 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_inicioActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_registrarUsuarios">
               <Properties>
@@ -159,9 +156,6 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_registrarUsuariosActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_registrarLibros">
               <Properties>
@@ -176,9 +170,6 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_registrarLibrosActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_prestamosDevoluciones">
               <Properties>
@@ -193,9 +184,6 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_prestamosDevolucionesActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_registroPrestamos">
               <Properties>
@@ -210,9 +198,6 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_registroPrestamosActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_salir">
               <Properties>
@@ -227,9 +212,6 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_salirActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

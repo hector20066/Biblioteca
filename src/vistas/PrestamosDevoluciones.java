@@ -5,7 +5,8 @@
 package vistas;
 
 import java.time.LocalDate;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
 import modelo.*;
 
 /**
@@ -13,10 +14,6 @@ import modelo.*;
  * @author Ing. Hector Acevedo
  */
 public class PrestamosDevoluciones extends javax.swing.JPanel {
-
-    ListaLibros listaLibros = ListaLibros.getListaLibros();
-    ListaPersona listaPersonas = ListaPersona.getListaPersona();
-    ListaPrestamos listaPrestamos = ListaPrestamos.getPrestamos();
     
     /**
      * Creates new form PrestamosDevoluciones
@@ -61,18 +58,8 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
         jLabel4.setText("Codigo del Libro:");
 
         btn_prestar.setText("PRESTAR LIBRO");
-        btn_prestar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_prestarActionPerformed(evt);
-            }
-        });
 
         btn_devolver.setText("DEVOLVER LIBRO");
-        btn_devolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_devolverActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Codigo Prestamo:");
 
@@ -152,92 +139,31 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void limpiarCampos(){
+    public void limpiarCampos(){
         txt_codigoLibro.setText("");
         txt_codigoPrestamos.setText("");
         txt_idUsuario.setText("");
     }
-    private void btn_prestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestarActionPerformed
-        try{
-            int codigoPrestamo = Integer.parseInt(txt_codigoPrestamos.getText());
-            int idUsuario = Integer.parseInt(txt_idUsuario.getText());
-            int codigoLibro = Integer.parseInt(txt_codigoLibro.getText());
-            
-            //Instancia de los Nodos
-            NodoPersonas nodoPersonas = listaPersonas.buscar(idUsuario);
-            NodoLibros nodoLibros = listaLibros.buscarPorCodigo(codigoLibro);
-            NodoPrestamos nodoPrestamos;
-            //Instancia de la clase Prestamos
-            Prestamos prestamos;
-            
-            LocalDate fecha = LocalDate.now();
-            
-            if(listaPrestamos.verificarExistencia(codigoLibro, idUsuario) == false){
-                if((nodoPersonas != null && nodoLibros != null)){
 
-                    int cantLibros = nodoLibros.getLibros().getCantidad();
+    public JButton getBtn_prestar(){
+        return btn_prestar;
+    }
 
-                    if(cantLibros > 0){
-                        nodoPrestamos = new NodoPrestamos();
-                        int nuevaCantidad;
+    public JButton getBtn_devolver(){
+        return btn_devolver;
+    }
 
-                        prestamos = new Prestamos();
-                        prestamos.setIdPersona(idUsuario);
-                        prestamos.setIdLibro(codigoLibro);
-                        prestamos.setCodigo(codigoPrestamo);
-                        prestamos.setFechaPrestamos(fecha);
-                        prestamos.setActivo(true);
+    public JTextField getTxt_codigoLibro(){
+        return txt_codigoLibro;
+    }
 
-                        nodoPrestamos.setPrestamos(prestamos);
-                        listaPrestamos.agragarPrestamo(nodoPrestamos);
+    public JTextField getTxt_codigoPrestamo(){
+        return txt_codigoPrestamos;
+    }
 
-                        nuevaCantidad = cantLibros -1;
-                        nodoLibros.getLibros().setCantidad(nuevaCantidad);
-
-                        JOptionPane.showMessageDialog(null, "Se ha realizado el prestamo del libro " + nodoLibros.getLibros().getTitulo() + " al usuario " + nodoPersonas.getPersona().getNombre(), null, JOptionPane.INFORMATION_MESSAGE);
-                        
-                        limpiarCampos();
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Este libro no esta disponible para prestar, Espere que otro usuario lo devuelva", null, JOptionPane.ERROR_MESSAGE);
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(null, "No se encontro el usuario con esta identificacion o el libro con ese codigo", null, JOptionPane.ERROR_MESSAGE);
-                }
-            }else{
-                JOptionPane.showMessageDialog(null, "Este usuario ya ha prestado este libro", null, JOptionPane.ERROR_MESSAGE);
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-            System.out.println("Ha ocurrido un error al tratar de prestar el libro");
-        }
-    }//GEN-LAST:event_btn_prestarActionPerformed
-
-    private void btn_devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_devolverActionPerformed
-        try {
-            int codigoLibro = Integer.parseInt(txt_codigoLibro.getText());
-            int idUsuario = Integer.parseInt(txt_idUsuario.getText());
-            
-            NodoPersonas nodoPersonas = listaPersonas.buscar(idUsuario);
-            NodoLibros nodoLibros = listaLibros.buscarPorCodigo(codigoLibro);
-            NodoPrestamos nodoPrestamos =listaPrestamos.buscarPrestamo(codigoLibro, idUsuario);
-
-            if(nodoPrestamos != null && nodoPrestamos.getPrestamos().getActivo() == true){
-                nodoPrestamos.getPrestamos().setActivo(false);
-
-                int cantidad = nodoLibros.getLibros().getCantidad();
-                nodoLibros.getLibros().setCantidad(cantidad + 1);
-
-                JOptionPane.showMessageDialog(null, "Se ha devuelto el libro " + nodoLibros.getLibros().getTitulo() + "\nque se encontraba en posesion del usuario " + nodoPersonas.getPersona().getNombre(), null, JOptionPane.INFORMATION_MESSAGE);
-                
-                limpiarCampos();
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro el prestamo de este libro", null, JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Ha ocurrido un error al hacer la funcion de devolver el libro");
-        }
-    }//GEN-LAST:event_btn_devolverActionPerformed
+    public JTextField getTxt_idUsuario(){
+        return txt_idUsuario;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
