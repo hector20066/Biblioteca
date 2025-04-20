@@ -39,6 +39,9 @@ public class RegistroPrestamos extends javax.swing.JPanel {
         btn_aceptar = new javax.swing.JButton();
         cbo_mostrarPrestamos = new javax.swing.JComboBox<>();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("REGISTRO GENERAL DE PRESTAMOS");

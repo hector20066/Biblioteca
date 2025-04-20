@@ -47,6 +47,9 @@ public class Biblioteca extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("BIBLIOTECA");
@@ -140,6 +143,9 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addGap(183, 183, 183)
                 .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jpl_contenedor.setBackground(new java.awt.Color(255, 255, 255));
+        jpl_contenedor.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jpl_contenedorLayout = new javax.swing.GroupLayout(jpl_contenedor);
         jpl_contenedor.setLayout(jpl_contenedorLayout);

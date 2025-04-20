@@ -67,6 +67,9 @@ public class RegistrarUsuario extends javax.swing.JPanel {
         txt_identificacionOptions = new javax.swing.JTextField();
         btn_aceptar = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("REGISTRO DE USUARIOS");

@@ -64,6 +64,8 @@ public class RegistrarLibros extends javax.swing.JPanel {
         btn_aceptar = new javax.swing.JButton();
         txt_autor = new javax.swing.JTextField();
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("REGISTRO DE LIBROS");

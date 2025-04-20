@@ -4,7 +4,7 @@
  */
 package vistas;
 
-import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 
 /**
  *
@@ -12,12 +12,23 @@ import com.formdev.flatlaf.FlatLightLaf;
  */
 public class Principal {
     
+    /**
+     * Metodo principal del programa, se cargan los temas y las ventanas del proyecto
+     * @param args 
+     */
     public static void main(String[]args){
         
         //Se carga el tema FlatLaf
         try{
             //Se usa el tema FlatLightLaf
-            FlatLightLaf.setup();
+            FlatIntelliJLaf.setup();
+            
+            // Otros temas de FlatLaf
+            // FlatLightLaf.setup();
+            // FlatDarkLaf.setup();
+            // FlatDarculaLaf.setup();
+            // FlatLightLaf.setup();
+            
         }catch(Exception ex){
             System.out.println("Fallo al cargar FlatLat");
         }
