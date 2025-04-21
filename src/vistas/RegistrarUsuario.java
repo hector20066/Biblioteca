@@ -4,7 +4,7 @@
  */
 package vistas;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import modelo.*;
@@ -213,6 +213,42 @@ public class RegistrarUsuario extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public JButton getBtn_guardar(){
+        return btn_guardar;
+    }
+
+    public JButton getBtn_aceptar(){
+        return btn_aceptar;
+    }
+
+    public JComboBox getCbo_opciones(){
+        return cbo_opciones;
+    }
+
+    public JComboBox getCbo_tipoUsuario(){
+        return cbo_tipoUsuario;
+    }
+
+    public JTextField getTxt_identificacion(){
+        return txt_identificacion;
+    }
+
+    public JTextField getTxt_identificacionOpciones(){
+        return txt_identificacionOptions;
+    }
+
+    public JTextField getTxt_nombre(){
+        return txt_nombre;
+    }
+
+    public JTextField getTxt_telefono(){
+        return txt_telefono;
+    }
+
+    public DefaultTableModel getModelo(){
+        return modelo;
+    }
 
     public void guardar(NodoPersonas nodo){
         String nombre = txt_nombre.getText();

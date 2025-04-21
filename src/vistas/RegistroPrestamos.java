@@ -4,17 +4,26 @@
  */
 package vistas;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Ing. Hector Acevedo
  */
 public class RegistroPrestamos extends javax.swing.JPanel {
 
+    DefaultTableModel modelo = new DefaultTableModel();
+    
     /**
      * Creates new form RegistroPrestamos
      */
     public RegistroPrestamos() {
         initComponents();
+
+        String titulo[] = new String[]{"CODIGO PRESTAMO", "ID USUARIO", "ID LIBRO", "FECHA PRESTAMO", "ESTADO"};
+        modelo.setColumnIdentifiers(titulo);
+        jtbl_reportePrestamos.setModel(modelo);
     }
 
     /**
@@ -149,6 +158,26 @@ public class RegistroPrestamos extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public JButton getBtn_aceptar(){
+        return btn_aceptar;
+    }
+
+    public JComboBox getCbo_opciones(){
+        return cbo_opciones;
+    }
+
+    public JComboBox getCbo_mostrarPrestamos(){
+        return cbo_mostrarPrestamos;
+    }
+
+    public JTextField getTxt_idUsuario(){
+        return txt_idUsuarios;
+    }
+
+    public DefaultTableModel getModelo(){
+        return modelo;
+    }
 
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
         
