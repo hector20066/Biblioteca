@@ -30,7 +30,13 @@ public class Main {
         }
         
         //Instancias de las vistas del programa
+        //Intancia de la vista Principal (Biblioteca)
         Biblioteca vista = new Biblioteca();
+        vista.setVisible(true);
+        vista.setLocationRelativeTo(null);
+        vista.setResizable(false);
+
+        //Intancias de las vistas del programa
         PrestamosDevoluciones prestamosDevoluciones = new PrestamosDevoluciones();
         RegistrarLibros registrarLibros = new RegistrarLibros();
         RegistrarUsuario registrarUsuarios = new RegistrarUsuario();
@@ -39,9 +45,9 @@ public class Main {
         //Se crean los controladores del programa
         new ControladorBiblioteca(vista, prestamosDevoluciones, registrarUsuarios, registrarLibros, registroPrestamos);
         new ControladorPrestamosDevoluciones(prestamosDevoluciones);
+        new ControladorRegistrarLibros(registrarLibros);
+        new ControladorRegistrarUsuarios(registrarUsuarios);
+        new ControladorRegistroPrestamos(registroPrestamos);
         
-        vista.setVisible(true);
-        vista.setLocationRelativeTo(null);
-        vista.setResizable(false);
     }
 }
