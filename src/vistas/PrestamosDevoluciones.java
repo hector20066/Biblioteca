@@ -4,10 +4,7 @@
  */
 package vistas;
 
-import java.time.LocalDate;
-
 import javax.swing.*;
-import modelo.*;
 
 /**
  *
@@ -164,7 +161,6 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
     public JTextField getTxt_idUsuario(){
         return txt_idUsuario;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_devolver;

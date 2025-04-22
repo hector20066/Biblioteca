@@ -100,7 +100,7 @@ public class RegistrarLibros extends javax.swing.JPanel {
 
         jLabel23.setText("Libros registrados");
 
-        cbo_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar libro por codigo", "Buscar libro por titulo", "Eliminar libro", "Ordenar Lista por codigos", "Ordenar lista por titulos", "Eliminar toda la informacion" }));
+        cbo_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar libro por codigo", "Buscar libro por titulo", "Eliminar libro (Codigo)", "Ordenar Lista por codigos", "Ordenar lista por titulos", "Eliminar toda la informacion" }));
 
         jLabel24.setText("Codigo/Titulo:");
 
@@ -244,7 +244,7 @@ public class RegistrarLibros extends javax.swing.JPanel {
         nodo.setLibros(libro);
     }
 
-    private void limpiarCampos() {
+    public void limpiarCampos() {
         txt_autor.setText("");
         txt_codigo.setText("");
         txt_cantDisponible.setText("");
