@@ -15,8 +15,6 @@ import modelo.*;
  */
 public class RegistrarUsuario extends javax.swing.JPanel {
 
-    ListaPersona listaPersona = ListaPersona.getListaPersona();
-
     DefaultTableModel modelo = new DefaultTableModel();
 
     /**
@@ -27,8 +25,6 @@ public class RegistrarUsuario extends javax.swing.JPanel {
         String titulos[] = new String[]{"Nombre", "Identificacion", "Telefono", "Tipo de Usuario"};
         modelo.setColumnIdentifiers(titulos);
         jtbl_reporteUsuarios.setModel(modelo);
-
-        cargarDatosTabla();
     }
 
     /**
@@ -80,11 +76,6 @@ public class RegistrarUsuario extends javax.swing.JPanel {
         cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Docente", "Administrativo" }));
 
         btn_guardar.setText("GUARDAR");
-        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_guardarActionPerformed(evt);
-            }
-        });
 
         jtbl_reporteUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,11 +99,6 @@ public class RegistrarUsuario extends javax.swing.JPanel {
         jLabel8.setText("Identificacion:");
 
         btn_aceptar.setText("ACEPTAR");
-        btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_aceptarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -250,106 +236,12 @@ public class RegistrarUsuario extends javax.swing.JPanel {
         return modelo;
     }
 
-    public void guardar(NodoPersonas nodo){
-        String nombre = txt_nombre.getText();
-        int identificacion = Integer.parseInt(txt_identificacion.getText());
-        String telefono = txt_telefono.getText();
-
-        if(cbo_tipoUsuario.getSelectedItem().equals("Estudiante")){
-            Persona estudiante = new Estudiante();
-            estudiante.setPersona(nombre, identificacion, telefono);
-            nodo.setPersona(estudiante);
-        }else{
-            if(cbo_tipoUsuario.getSelectedItem().equals("Docente")){
-                Persona docente = new Docente();
-                docente.setPersona(nombre, identificacion, telefono);
-                nodo.setPersona(docente);
-            }else{
-                if(cbo_tipoUsuario.getSelectedItem().equals("Administrativo")){
-                    Persona administrativo = new Administrativo();
-                    administrativo.setPersona(nombre, identificacion, telefono);
-                    nodo.setPersona(administrativo);
-                }
-            }
-        }
-    }
-
-    private void cargarDatosTabla(){
-        NodoPersonas temp = listaPersona.getCabeza();
-        while(temp != null){
-            String nombre = temp.getPersona().getNombre();
-            int identificacion = temp.getPersona().getIdentificacion();
-            String telefono = temp.getPersona().getTelefono();
-            String tipoUsuario = temp.getPersona().getTipoPersona();
-
-            Object listar[] = new Object[]{nombre, identificacion, telefono, tipoUsuario};
-            modelo.addRow(listar);
-            temp = temp.getSiguiente();
-        }
-    }
-
     public void limpiarCampos(){
         txt_nombre.setText("");
         txt_identificacion.setText("");
         cbo_tipoUsuario.setSelectedIndex(0);
         txt_telefono.setText("");
     }
-
-    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        try {
-            NodoPersonas nodo = new NodoPersonas();
-            guardar(nodo);
-            listaPersona.agregarNodo(nodo);
-            cargarDatosTabla();
-            JOptionPane.showMessageDialog(null, "Los datos han sido guardados correctamente.", null, JOptionPane.INFORMATION_MESSAGE);
-            limpiarCampos();
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al guardar los datos.", null, JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btn_guardarActionPerformed
-
-    private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-        try {
-            int opcion = cbo_opciones.getSelectedIndex();
-            int identificacionBuscar;
-            NodoPersonas nodo;
-            switch(opcion){
-                case 0:
-                    identificacionBuscar = Integer.parseInt(txt_identificacionOptions.getText());
-                    nodo = listaPersona.buscar(identificacionBuscar);
-                    
-                    if(nodo != null){
-                        String nombre = nodo.getPersona().getNombre();
-                        int identificacion = nodo.getPersona().getIdentificacion();
-                        String telefono = nodo.getPersona().getTelefono();
-                        String tipoUsuario = nodo.getPersona().getTipoPersona();
-
-                        Object listar[] = new Object[]{nombre, identificacion, telefono, tipoUsuario};
-                        modelo.addRow(listar);
-                        txt_identificacionOptions.setText("");
-                    }
-                    break;
-                case 1:
-                    identificacionBuscar = Integer.parseInt(txt_identificacionOptions.getText());
-                    nodo = listaPersona.buscar(identificacionBuscar);
-                    if(nodo != null){
-                        listaPersona.eliminar(nodo);
-                        cargarDatosTabla();
-                        txt_identificacionOptions.setText("");
-                    }
-                    break;
-                case 2:
-                    listaPersona.ordenarLista();
-                    break;
-                case 3:
-                    listaPersona.eliminarLista();
-                    modelo.setRowCount(0);
-                    break;
-            }
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_btn_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

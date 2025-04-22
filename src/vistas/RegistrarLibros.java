@@ -14,8 +14,6 @@ import modelo.*;
  */
 public class RegistrarLibros extends javax.swing.JPanel {
 
-    ListaLibros listaLibros = ListaLibros.getListaLibros();
-    
     DefaultTableModel modelo = new DefaultTableModel();
 
     /**
@@ -26,9 +24,6 @@ public class RegistrarLibros extends javax.swing.JPanel {
         String titulo[] = new String[]{"TITULO", "CODIGO", "AUTOR", "CANTIDAD DISPONIBLE"};
         modelo.setColumnIdentifiers(titulo);
         jtbl_reporteLibros.setModel(modelo);
-
-        cargarDatos(); //Metodo para cargar los datos en la tabla
-
     }
 
     /**
@@ -77,11 +72,6 @@ public class RegistrarLibros extends javax.swing.JPanel {
         jLabel21.setText("Autor:");
 
         btn_guardar.setText("GUARDAR");
-        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_guardarActionPerformed(evt);
-            }
-        });
 
         jtbl_reporteLibros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,16 +90,11 @@ public class RegistrarLibros extends javax.swing.JPanel {
 
         jLabel23.setText("Libros registrados");
 
-        cbo_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar libro por codigo", "Buscar libro por titulo", "Eliminar libro (Codigo)", "Ordenar Lista por codigos", "Ordenar lista por titulos", "Eliminar toda la informacion" }));
+        cbo_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar libro por codigo", "Buscar libro por titulo", "Eliminar libro", "Ordenar Lista por codigos", "Ordenar lista por titulos", "Eliminar toda la informacion" }));
 
         jLabel24.setText("Codigo/Titulo:");
 
         btn_aceptar.setText("ACEPTAR");
-        btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_aceptarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -212,37 +197,6 @@ public class RegistrarLibros extends javax.swing.JPanel {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void cargarDatos(){
-        NodoLibros nodo = listaLibros.getCabeza();
-        modelo.setRowCount(0);
-        while(nodo != null){
-            String titulo = nodo.getLibros().getTitulo();
-            int codigo = nodo.getLibros().getCodigo();
-            String autor = nodo.getLibros().getAutor();
-            int cantidad = nodo.getLibros().getCantidad();
-
-            Object listar[] = new Object[]{titulo, codigo, autor, cantidad};
-            modelo.addRow(listar);
-
-            nodo = nodo.getSiguiente();
-        }
-    }
-
-    private void llenar(NodoLibros nodo) {
-        String titulo = txt_titulo.getText();
-        int codigo = Integer.parseInt(txt_codigo.getText());
-        String autor = txt_autor.getText();
-        int cantidad = Integer.parseInt(txt_cantDisponible.getText());
-        
-        Libros libro = new Libros();
-
-        libro.setCodigo(codigo);
-        libro.setTitulo(titulo);
-        libro.setAutor(autor);
-        libro.setCantidad(cantidad);
-        nodo.setLibros(libro);
-    }
 
     public void limpiarCampos() {
         txt_autor.setText("");
@@ -286,31 +240,6 @@ public class RegistrarLibros extends javax.swing.JPanel {
     public DefaultTableModel getModelo(){
         return modelo;
     }
-
-    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        try{
-            int codigoLibro = Integer.parseInt(txt_codigo.getText());
-            if(listaLibros.verficarCodigo(codigoLibro) == false){
-
-                NodoLibros nodo = new NodoLibros();
-
-                llenar(nodo);
-                listaLibros.agregarNodo(nodo);
-                listaLibros.ordenarListaPorCodigo();
-                cargarDatos();
-                limpiarCampos();
-            }else{
-                JOptionPane.showMessageDialog(null, "Ya hay un libro registrado con este codigo", null, JOptionPane.ERROR_MESSAGE);
-                txt_codigo.grabFocus();
-            }
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btn_guardarActionPerformed
-
-    private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-        
-    }//GEN-LAST:event_btn_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
