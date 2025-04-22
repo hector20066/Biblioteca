@@ -176,9 +176,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="ACEPTAR"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_aceptarActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbo_mostrarPrestamos">
           <Properties>
@@ -190,9 +187,6 @@
               </StringArray>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbo_mostrarPrestamosActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>

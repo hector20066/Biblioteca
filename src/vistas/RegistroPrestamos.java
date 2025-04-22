@@ -77,18 +77,8 @@ public class RegistroPrestamos extends javax.swing.JPanel {
         cbo_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buscar prestamo por codigo", "Bucar prestamo por id del Usuario", "Eliminar prestamo", "Eliminar todos los prestamos", "Ordenar prestamos por fecha", "Ordenar prestamos por codigo" }));
 
         btn_aceptar.setText("ACEPTAR");
-        btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_aceptarActionPerformed(evt);
-            }
-        });
 
         cbo_mostrarPrestamos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mostrar pretamos activos", "Mostrar prestamos inactivos", "Mostrar registro completo" }));
-        cbo_mostrarPrestamos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_mostrarPrestamosActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,14 +168,6 @@ public class RegistroPrestamos extends javax.swing.JPanel {
     public DefaultTableModel getModelo(){
         return modelo;
     }
-
-    private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-        
-    }//GEN-LAST:event_btn_aceptarActionPerformed
-
-    private void cbo_mostrarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_mostrarPrestamosActionPerformed
-        
-    }//GEN-LAST:event_cbo_mostrarPrestamosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

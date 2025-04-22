@@ -19,13 +19,15 @@ public class ControladorBiblioteca implements ActionListener{
     private RegistrarUsuario registrarUsuarios;
     private RegistrarLibros registrarLibros;
     private RegistroPrestamos registroPrestamos;
+    private ControladorRegistroPrestamos controladorRegistroPrestamos;
 
-    public ControladorBiblioteca(Biblioteca biblioteca, PrestamosDevoluciones prestamosDevoluciones, RegistrarUsuario registrarUsuario, RegistrarLibros registrarLibros, RegistroPrestamos registroPrestamos){
+    public ControladorBiblioteca(Biblioteca biblioteca, PrestamosDevoluciones prestamosDevoluciones, RegistrarUsuario registrarUsuario, RegistrarLibros registrarLibros, RegistroPrestamos registroPrestamos, ControladorRegistroPrestamos controladorRegistroPrestamos){
         this.biblioteca = biblioteca;
         this.prestamosDevoluciones = prestamosDevoluciones;
         this.registrarUsuarios = registrarUsuario;
         this.registrarLibros = registrarLibros;
         this.registroPrestamos = registroPrestamos;
+        this.controladorRegistroPrestamos = controladorRegistroPrestamos;
         
         this.biblioteca.getBtn_inicio().addActionListener(this);
         this.biblioteca.getBtn_prestamosDevoluciones().addActionListener(this);
@@ -50,6 +52,7 @@ public class ControladorBiblioteca implements ActionListener{
                         biblioteca.cambioPaneles(registrarUsuarios);
                     }else{
                         if(evento.getSource() == biblioteca.getBtn_registroPrestamos()){
+                            controladorRegistroPrestamos.actualizarTabla();
                             biblioteca.cambioPaneles(registroPrestamos);
                         }else{
                             if(evento.getSource() == biblioteca.getBtn_salir()){

@@ -42,12 +42,13 @@ public class Main {
         RegistrarUsuario registrarUsuarios = new RegistrarUsuario();
         RegistroPrestamos registroPrestamos = new RegistroPrestamos();
 
+        //Instancia del controlador RegistroPrestamos, se usa para actualizar la informacion
+        ControladorRegistroPrestamos controladorRegistroPrestamos = new ControladorRegistroPrestamos(registroPrestamos);
         //Se crean los controladores del programa
-        new ControladorBiblioteca(vista, prestamosDevoluciones, registrarUsuarios, registrarLibros, registroPrestamos);
+        new ControladorBiblioteca(vista, prestamosDevoluciones, registrarUsuarios, registrarLibros, registroPrestamos, controladorRegistroPrestamos);
         new ControladorPrestamosDevoluciones(prestamosDevoluciones);
         new ControladorRegistrarLibros(registrarLibros);
         new ControladorRegistrarUsuarios(registrarUsuarios);
-        new ControladorRegistroPrestamos(registroPrestamos);
         
     }
 }

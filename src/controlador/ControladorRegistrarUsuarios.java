@@ -68,6 +68,7 @@ public class ControladorRegistrarUsuarios implements ActionListener{
 
     public void cargarDatos(){
         NodoPersonas temp = listaPersonas.getCabeza();
+        registrarUsuarios.getModelo().setRowCount(0);
 
         while(temp != null){
             String nombre = temp.getPersona().getNombre();
@@ -107,6 +108,8 @@ public class ControladorRegistrarUsuarios implements ActionListener{
                 case 0:
                     identificacionBuscar = Integer.parseInt(registrarUsuarios.getTxt_identificacionOpciones().getText());
                     nodo = listaPersonas.buscar(identificacionBuscar);
+
+                    registrarUsuarios.getModelo().setRowCount(0);
 
                     if(nodo != null){
                         String nombre = nodo.getPersona().getNombre();

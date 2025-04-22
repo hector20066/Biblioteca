@@ -51,6 +51,10 @@ public class ControladorRegistroPrestamos implements ActionListener{
         }
     }
 
+    public void actualizarTabla(){
+        cargarPrestamos();
+    }
+
     private void cargarPrestamos(){
         try {
             NodoPrestamos nodo = listaPrestamos.getCabeza();

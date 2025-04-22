@@ -40,9 +40,24 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
         }
     }
 
+    private void guardarInfoPrestamos(NodoPrestamos nodo){
+        int codigoPrestamo = Integer.parseInt(prestamosDevoluciones.getTxt_codigoPrestamo().getText());
+        int idUsuario = Integer.parseInt(prestamosDevoluciones.getTxt_idUsuario().getText());
+        int codigoLibro = Integer.parseInt(prestamosDevoluciones.getTxt_codigoLibro().getText());
+        LocalDate fechaPrestamo = LocalDate.now(); //Se obtiene la fecha en la que se realiza el prestamo
+        
+        Prestamos prestamos = new Prestamos();
+        prestamos.setIdPersona(idUsuario);
+        prestamos.setIdLibro(codigoLibro);
+        prestamos.setCodigo(codigoPrestamo);
+        prestamos.setFechaPrestamos(fechaPrestamo);
+        prestamos.setActivo(true);
+
+        nodo.setPrestamos(prestamos);
+    }
+
     private void prestar(){
         try {
-            int codigoPrestamo = Integer.parseInt(prestamosDevoluciones.getTxt_codigoPrestamo().getText());
             int idUsuario = Integer.parseInt(prestamosDevoluciones.getTxt_idUsuario().getText());
             int codigoLibro = Integer.parseInt(prestamosDevoluciones.getTxt_codigoLibro().getText());
 
@@ -50,12 +65,36 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
             NodoPersonas nodoPersonas = listaPersona.buscar(idUsuario);
             NodoLibros nodoLibros = listaLibros.buscarPorCodigo(codigoLibro);
             NodoPrestamos nodoPrestamos;
-            //Instancia de la clase Prestamos
-            Prestamos prestamos;
+            NodoPrestamos nodoVerificar = listaPrestamos.buscarPrestamo(codigoLibro, idUsuario);
             
-            LocalDate fechaPrestamo = LocalDate.now(); //Se obtiene la fecha en la que se realiza el prestamo
-
-            if (listaPrestamos.verificarExistencia(codigoLibro, idUsuario) == false) {
+            if(nodoVerificar != null){
+                if(nodoVerificar.getPrestamos().getActivo() == true){
+                    JOptionPane.showMessageDialog(null, "Ya se encontro este prestamos activo para este usuario", null, JOptionPane.ERROR_MESSAGE);
+                }else{
+                    if (nodoPersonas != null && nodoLibros != null) {
+                        int cantLibros = nodoLibros.getLibros().getCantidad();
+        
+                        if(cantLibros > 0){
+                            nodoPrestamos = new NodoPrestamos();
+                            int nuevaCantidad;
+        
+                            guardarInfoPrestamos(nodoPrestamos);
+                            listaPrestamos.agregarPrestamo(nodoPrestamos);
+        
+                            nuevaCantidad = cantLibros - 1;
+                            nodoLibros.getLibros().setCantidad(nuevaCantidad);
+        
+                            JOptionPane.showMessageDialog(null, "Se ha realizado el prestamo del libro " + nodoLibros.getLibros().getTitulo() + " al usuario " + nodoPersonas.getPersona().getNombre(), null, JOptionPane.INFORMATION_MESSAGE);
+        
+                            prestamosDevoluciones.limpiarCampos();
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Este libro no esta disponible para prestar, Espere que otro usuario lo devuelva", null, JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "No se encontro el usuario con esta identificacion o el libro con ese codigo", null, JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }else{
                 if (nodoPersonas != null && nodoLibros != null) {
                     int cantLibros = nodoLibros.getLibros().getCantidad();
 
@@ -63,14 +102,7 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
                         nodoPrestamos = new NodoPrestamos();
                         int nuevaCantidad;
 
-                        prestamos = new Prestamos();
-                        prestamos.setIdPersona(idUsuario);
-                        prestamos.setIdLibro(codigoLibro);
-                        prestamos.setCodigo(codigoPrestamo);
-                        prestamos.setFechaPrestamos(fechaPrestamo);
-                        prestamos.setActivo(true);
-
-                        nodoPrestamos.setPrestamos(prestamos);
+                        guardarInfoPrestamos(nodoPrestamos);
                         listaPrestamos.agregarPrestamo(nodoPrestamos);
 
                         nuevaCantidad = cantLibros - 1;
@@ -85,8 +117,6 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
                 }else{
                     JOptionPane.showMessageDialog(null, "No se encontro el usuario con esta identificacion o el libro con ese codigo", null, JOptionPane.ERROR_MESSAGE);
                 }
-            }else{
-                JOptionPane.showMessageDialog(null, "Este usuario ya ha prestado este libro", null, JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
             e.printStackTrace();
