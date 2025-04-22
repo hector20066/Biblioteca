@@ -52,7 +52,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_idUsuarios" min="-2" pref="202" max="-2" attributes="0"/>
+                                  <Component id="txt_codigo_idUsuario" min="-2" pref="202" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -93,7 +93,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_idUsuarios" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_codigo_idUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -153,7 +153,7 @@
             <Property name="text" type="java.lang.String" value="Codigo/Id Usuario:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_idUsuarios">
+        <Component class="javax.swing.JTextField" name="txt_codigo_idUsuario">
         </Component>
         <Component class="javax.swing.JComboBox" name="cbo_opciones">
           <Properties>

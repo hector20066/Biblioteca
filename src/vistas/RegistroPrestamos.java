@@ -43,7 +43,7 @@ public class RegistroPrestamos extends javax.swing.JPanel {
         jtbl_reportePrestamos = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txt_idUsuarios = new javax.swing.JTextField();
+        txt_codigo_idUsuario = new javax.swing.JTextField();
         cbo_opciones = new javax.swing.JComboBox<>();
         btn_aceptar = new javax.swing.JButton();
         cbo_mostrarPrestamos = new javax.swing.JComboBox<>();
@@ -107,7 +107,7 @@ public class RegistroPrestamos extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_idUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txt_codigo_idUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -139,7 +139,7 @@ public class RegistroPrestamos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txt_idUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_codigo_idUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbo_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,8 +171,8 @@ public class RegistroPrestamos extends javax.swing.JPanel {
         return cbo_mostrarPrestamos;
     }
 
-    public JTextField getTxt_idUsuario(){
-        return txt_idUsuarios;
+    public JTextField getTxt_codigo_idUsuario(){
+        return txt_codigo_idUsuario;
     }
 
     public DefaultTableModel getModelo(){
@@ -200,6 +200,6 @@ public class RegistroPrestamos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jtbl_reportePrestamos;
-    private javax.swing.JTextField txt_idUsuarios;
+    private javax.swing.JTextField txt_codigo_idUsuario;
     // End of variables declaration//GEN-END:variables
 }
