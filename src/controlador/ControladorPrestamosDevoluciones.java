@@ -120,7 +120,7 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Ha ocurrido un error al tratar de prestar el libro.\nError: " + e);
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al tratar realizar este prestamo", null, JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -148,7 +148,7 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Ha ocurrido un error al tratar de devolver el libro.\nError: " + e);
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al tratar realizar esta devolucion", null, JOptionPane.ERROR_MESSAGE);
         }
     }
     
