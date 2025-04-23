@@ -102,9 +102,9 @@ public class ListaPersona {
 
     public void cambiar(NodoPersonas nodo1, NodoPersonas nodo2){
         NodoPersonas temp = new NodoPersonas();
-        temp.compiarNodo(nodo1);
-        nodo1.compiarNodo(nodo2);
-        nodo2.compiarNodo(temp);
+        temp.copiarNodo(nodo1);
+        nodo1.copiarNodo(nodo2);
+        nodo2.copiarNodo(temp);
     }
 
     public void ordenarLista(){

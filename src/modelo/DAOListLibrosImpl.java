@@ -25,10 +25,12 @@ public class DAOListLibrosImpl implements DAOListaLibros{
         return listaLibros;
     }
 
+    @Override
     public void setCabeza(NodoLibros cabeza){
         this.cabeza = cabeza;
     }
 
+    @Override
     public NodoLibros getCabeza(){
         return cabeza;
     }

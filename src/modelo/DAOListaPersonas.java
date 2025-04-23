@@ -10,6 +10,9 @@ package modelo;
  */
 public interface DAOListaPersonas {
     
+    //Metodos necesarios para el manejo de la informacion de los usuarios
+    public void setCabeza(NodoPersonas cabeza);
+    public NodoPersonas getCabeza();
     public NodoPersonas ultimo();
     public int contarNodos();
     public boolean verificarId(int identificacion);

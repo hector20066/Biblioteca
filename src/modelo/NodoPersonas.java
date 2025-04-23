@@ -34,7 +34,7 @@ public class NodoPersonas {
         return siguiente;
     }
 
-    public void compiarNodo(NodoPersonas nodo){
+    public void copiarNodo(NodoPersonas nodo){
         this.persona = nodo.getPersona();
     }
 
