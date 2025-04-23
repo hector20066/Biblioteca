@@ -10,4 +10,17 @@ package modelo;
  */
 public interface DAOListaLibros {
     
+    //Metodos necesarios para el manejo de la informacion de los libros
+    public NodoLibros ultimo();
+    public int contarNodos();
+    public boolean verificarCodigo(int codigo);
+    public void agregarNodo(NodoLibros nodo);
+    public NodoLibros buscarPorTitulo(String titulo);
+    public NodoLibros buscarPorCodigo(int codigo);
+    public void eliminarNodo(NodoLibros nodo);
+    public void eliminarLista();
+    public void cambiar(NodoLibros nodo1, NodoLibros nodo2); 
+    public void ordenarListTitulos();
+    public void ordenarListCodigos();
+    
 }

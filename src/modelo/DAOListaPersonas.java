@@ -10,4 +10,14 @@ package modelo;
  */
 public interface DAOListaPersonas {
     
+    public NodoPersonas ultimo();
+    public int contarNodos();
+    public boolean verificarId(int identificacion);
+    public void agregarNodo(NodoPersonas nodo);
+    public NodoPersonas buscar(int identificacion);
+    public void eliminarNodo(NodoPersonas nodo);
+    public void eliminarLista();
+    public void cambiar(NodoPersonas nodo1, NodoPersonas nodo2);
+    public void ordenarLista();
+    
 }

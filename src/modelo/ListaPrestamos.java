@@ -54,18 +54,6 @@ public class ListaPrestamos {
         return contador;
     }
 
-    public boolean verificarExistencia(int codigo){
-        NodoPrestamos nodo = cabeza;
-        while(nodo != null){
-            if(nodo.getPrestamos().getCodigo() == codigo){
-                return true;
-            }else{
-                nodo = nodo.getSiguiente();
-            }
-        }
-        return false;
-    }
-
     public void agregarPrestamo(NodoPrestamos nuevo){
         if(cabeza == null){
             setCabeza(nuevo);
@@ -171,17 +159,6 @@ public class ListaPrestamos {
                 nj = nj.getSiguiente();
             }
         }
-    }
-    
-    public boolean verificarExistencia(int idLibro, int idPersona){
-        NodoPrestamos temp = cabeza;
-        while(temp != null){
-            if((temp.getPrestamos().getIdLibros() == idLibro) && (temp.getPrestamos().getIdPersona() == idPersona)){
-                return true;
-            }
-            temp = temp.getSiguiente();
-        }
-        return false;
     }
 
 }
