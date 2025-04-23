@@ -18,9 +18,9 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
     
     private PrestamosDevoluciones prestamosDevoluciones;
 
-    ListaLibros listaLibros = ListaLibros.getListaLibros();
-    ListaPersona listaPersona = ListaPersona.getListaPersona();
-    ListaPrestamos listaPrestamos = ListaPrestamos.getPrestamos();
+    DAOListaLibros listaLibros = DAOListLibrosImpl.getListaLibros();
+    DAOListaPersonas listaPersona = DAOListPersonasImpl.getListaPersonas();
+    DAOListaPrestamos listaPrestamos = DAOListPrestamosImpl.getListaPrestamos();
 
     public ControladorPrestamosDevoluciones(PrestamosDevoluciones prestamosDevoluciones){
         this.prestamosDevoluciones = prestamosDevoluciones;
@@ -65,7 +65,7 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
             NodoPersonas nodoPersonas = listaPersona.buscar(idUsuario);
             NodoLibros nodoLibros = listaLibros.buscarPorCodigo(codigoLibro);
             NodoPrestamos nodoPrestamos;
-            NodoPrestamos nodoVerificar = listaPrestamos.buscarPrestamo(codigoLibro, idUsuario);
+            NodoPrestamos nodoVerificar = listaPrestamos.buscarPrestamos(codigoLibro, idUsuario);
             
             if(nodoVerificar != null){
                 if(nodoVerificar.getPrestamos().getActivo() == true){
@@ -79,7 +79,7 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
                             int nuevaCantidad;
         
                             guardarInfoPrestamos(nodoPrestamos);
-                            listaPrestamos.agregarPrestamo(nodoPrestamos);
+                            listaPrestamos.agregarNodo(nodoPrestamos);
         
                             nuevaCantidad = cantLibros - 1;
                             nodoLibros.getLibros().setCantidad(nuevaCantidad);
@@ -103,7 +103,7 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
                         int nuevaCantidad;
 
                         guardarInfoPrestamos(nodoPrestamos);
-                        listaPrestamos.agregarPrestamo(nodoPrestamos);
+                        listaPrestamos.agregarNodo(nodoPrestamos);
 
                         nuevaCantidad = cantLibros - 1;
                         nodoLibros.getLibros().setCantidad(nuevaCantidad);
@@ -131,7 +131,7 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
 
             NodoPersonas nodoPersonas = listaPersona.buscar(idUsuario);
             NodoLibros nodoLibros = listaLibros.buscarPorCodigo(codigoLibro);
-            NodoPrestamos nodoPrestamos = listaPrestamos.buscarPrestamo(codigoLibro, idUsuario);
+            NodoPrestamos nodoPrestamos = listaPrestamos.buscarPrestamos(codigoLibro, idUsuario);
 
             if(nodoPrestamos != null && nodoPrestamos.getPrestamos().getActivo() == true){
                 nodoPrestamos.getPrestamos().setActivo(false);

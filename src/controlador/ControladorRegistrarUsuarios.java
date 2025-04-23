@@ -17,7 +17,7 @@ import vistas.RegistrarUsuario;
 public class ControladorRegistrarUsuarios implements ActionListener{
     
     private RegistrarUsuario registrarUsuarios;
-    ListaPersona listaPersonas = ListaPersona.getListaPersona();
+    DAOListaPersonas listaPersonas = DAOListPersonasImpl.getListaPersonas();
 
     public ControladorRegistrarUsuarios(RegistrarUsuario registrarUsuarios){
         this.registrarUsuarios = registrarUsuarios;
@@ -131,7 +131,7 @@ public class ControladorRegistrarUsuarios implements ActionListener{
                     nodo = listaPersonas.buscar(identificacionBuscar);
 
                     if(nodo != null){
-                        listaPersonas.eliminar(nodo);
+                        listaPersonas.eliminarNodo(nodo);
                         cargarDatos();
                         registrarUsuarios.getTxt_identificacionOpciones().setText("");
                     }else{

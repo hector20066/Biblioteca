@@ -7,9 +7,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import modelo.Libros;
-import modelo.ListaLibros;
-import modelo.NodoLibros;
+import modelo.*;
 import vistas.RegistrarLibros;
 
 /**
@@ -20,7 +18,7 @@ public class ControladorRegistrarLibros implements ActionListener{
     
     private RegistrarLibros registrarLibros;
     
-    ListaLibros listaLibros = ListaLibros.getListaLibros();
+    DAOListaLibros listaLibros = DAOListLibrosImpl.getListaLibros();
     
     public ControladorRegistrarLibros(RegistrarLibros registrarLibros){
         this.registrarLibros = registrarLibros;
@@ -76,12 +74,12 @@ public class ControladorRegistrarLibros implements ActionListener{
         try{
             int codigo = Integer.parseInt(registrarLibros.getTxt_codigo().getText());
             
-            if(listaLibros.verficarCodigo(codigo) == false){
+            if(listaLibros.verificarCodigo(codigo) == false){
                 NodoLibros nodo = new NodoLibros();
 
                 llenar(nodo);
                 listaLibros.agregarNodo(nodo);
-                listaLibros.ordenarListaPorCodigo();
+                listaLibros.ordenarListCodigos();
                 cargarDatos();
                 JOptionPane.showMessageDialog(null, "Se ha registrado el libro correctamente", null, JOptionPane.INFORMATION_MESSAGE);
                 registrarLibros.limpiarCampos();
@@ -148,7 +146,7 @@ public class ControladorRegistrarLibros implements ActionListener{
                     nodo = listaLibros.buscarPorCodigo(codigoBuscar);
 
                     if(nodo != null){
-                        listaLibros.eliminar(nodo);
+                        listaLibros.eliminarNodo(nodo);
                         cargarDatos();
                         registrarLibros.getTxt_codigoOpciones().setText("");
                         JOptionPane.showMessageDialog(null, "Se ha eliminado el libro correctamente", null, JOptionPane.INFORMATION_MESSAGE);
@@ -158,12 +156,12 @@ public class ControladorRegistrarLibros implements ActionListener{
                     }
                     break;
                 case 3:
-                    listaLibros.ordenarListaPorCodigo();
+                    listaLibros.ordenarListCodigos();
                     cargarDatos();
                     registrarLibros.getTxt_codigoOpciones().setText("");
                     break;
                 case 4:
-                    listaLibros.ordenarListaPorTitulo();
+                    listaLibros.ordenarListTitulos();
                     cargarDatos();
                     registrarLibros.getTxt_codigoOpciones().setText("");
                     break;

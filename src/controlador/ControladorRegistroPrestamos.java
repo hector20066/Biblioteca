@@ -8,8 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import modelo.ListaPrestamos;
-import modelo.NodoPrestamos;
+import modelo.*;
 import vistas.RegistroPrestamos;
 
 /**
@@ -19,7 +18,7 @@ import vistas.RegistroPrestamos;
 public class ControladorRegistroPrestamos implements ActionListener{
     
     private RegistroPrestamos registroPrestamos;
-    ListaPrestamos listaPrestamos = ListaPrestamos.getPrestamos();
+    DAOListaPrestamos listaPrestamos = DAOListPrestamosImpl.getListaPrestamos();
 
     public ControladorRegistroPrestamos(RegistroPrestamos registroPrestamos){
         this.registroPrestamos = registroPrestamos;
@@ -210,7 +209,7 @@ public class ControladorRegistroPrestamos implements ActionListener{
                     nodo = listaPrestamos.buscar(codigoBuscar);
 
                     if(nodo != null){
-                        listaPrestamos.eliminar(nodo);
+                        listaPrestamos.eliminarNodo(nodo);
                         cargarPrestamos();
                     }else{
                         JOptionPane.showMessageDialog(null, "No se ha encontrado el prestamo con este codigo", null, JOptionPane.ERROR_MESSAGE);
@@ -223,11 +222,11 @@ public class ControladorRegistroPrestamos implements ActionListener{
                     JOptionPane.showMessageDialog(null, "Se ha eliminado el registro de prestamos", null, JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 4: //Ordenar los prestamos por fecha del prestamo
-                    listaPrestamos.ordenarListaFecha();
+                    listaPrestamos.ordenarPrestamosFecha();
                     cargarPrestamos();
                     break;
                 case 5: //Ordenar los prestamos por su codigo
-                    listaPrestamos.ordenarListaCodigo();
+                    listaPrestamos.ordenarPrestamosCodigos();;
                     cargarPrestamos();
                     break;
             }
