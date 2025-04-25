@@ -19,8 +19,8 @@ public interface DAOListaLibros {
     public int contarNodos();
     public boolean verificarCodigo(int codigo);
     public void agregarNodo(NodoLibros nodo);
-    public NodoLibros buscarPorTitulo(String titulo);
-    public NodoLibros buscarPorCodigo(int codigo);
+    public NodoLibros buscar(String titulo);
+    public NodoLibros buscar(int codigo);
     public void eliminarNodo(NodoLibros nodo);
     public void eliminarLista();
     public void cambiar(NodoLibros nodo1, NodoLibros nodo2);

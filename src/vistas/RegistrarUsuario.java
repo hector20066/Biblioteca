@@ -4,10 +4,9 @@
  */
 package vistas;
 
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
-import modelo.*;
 
 /**
  *
@@ -200,12 +199,12 @@ public class RegistrarUsuario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getBtn_guardar(){
-        return btn_guardar;
+    public void setControladorGuardar(ActionListener action){
+        btn_guardar.addActionListener(action);
     }
 
-    public JButton getBtn_aceptar(){
-        return btn_aceptar;
+    public void setControladorAceptar(ActionListener action){
+        btn_aceptar.addActionListener(action);
     }
 
     public JComboBox getCbo_opciones(){
@@ -235,14 +234,6 @@ public class RegistrarUsuario extends javax.swing.JPanel {
     public DefaultTableModel getModelo(){
         return modelo;
     }
-
-    public void limpiarCampos(){
-        txt_nombre.setText("");
-        txt_identificacion.setText("");
-        cbo_tipoUsuario.setSelectedIndex(0);
-        txt_telefono.setText("");
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_aceptar;

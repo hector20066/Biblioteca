@@ -4,6 +4,7 @@
  */
 package vistas;
 
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
@@ -142,16 +143,16 @@ public class PrestamosDevoluciones extends javax.swing.JPanel {
         txt_idUsuario.setText("");
     }
 
-    public JButton getBtn_prestar(){
-        return btn_prestar;
+    public void setControladorPrestar(ActionListener action){
+        btn_prestar.addActionListener(action);
     }
 
-    public JButton getBtn_devolver(){
-        return btn_devolver;
+    public void setControladorDevolver(ActionListener action){
+        btn_devolver.addActionListener(action);
     }
 
     public JTextField getTxt_codigoLibro(){
-        return txt_codigoLibro;
+         return txt_codigoLibro;
     }
 
     public JTextField getTxt_codigoPrestamo(){

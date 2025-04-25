@@ -4,9 +4,9 @@
  */
 package vistas;
 
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import modelo.*;
 
 /**
  *
@@ -205,12 +205,12 @@ public class RegistrarLibros extends javax.swing.JPanel {
         txt_titulo.setText("");
     }
     
-    public JButton getBtn_guardar(){
-        return btn_guardar;
+    public void setControladorGuardar(ActionListener action){
+        btn_guardar.addActionListener(action);
     }
     
-    public JButton getBtn_aceptar(){
-        return btn_aceptar;
+    public void setControladorAceptar(ActionListener action){
+        btn_aceptar.addActionListener(action);
     }
     
     public JComboBox getCbo_opciones(){
@@ -240,7 +240,6 @@ public class RegistrarLibros extends javax.swing.JPanel {
     public DefaultTableModel getModelo(){
         return modelo;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_aceptar;

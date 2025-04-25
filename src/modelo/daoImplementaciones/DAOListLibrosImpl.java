@@ -13,70 +13,165 @@ import modelo.nodos.NodoLibros;
  */
 public class DAOListLibrosImpl implements DAOListaLibros{
 
+    private static DAOListLibrosImpl listaLibros;
+    private NodoLibros cabeza;
+
+    public DAOListLibrosImpl(){
+        cabeza = null;
+        listaLibros = null;
+    }
+
+    public static DAOListLibrosImpl getListaLibros(){
+        if(listaLibros == null){
+            listaLibros = new DAOListLibrosImpl();
+        }
+        return listaLibros;
+    }
+
     @Override
     public void setCabeza(NodoLibros cabeza) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.cabeza = cabeza;
     }
 
     @Override
     public NodoLibros getCabeza() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return cabeza;
     }
 
     @Override
     public NodoLibros ultimo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoLibros temp = cabeza;
+        while(temp != null){
+            if(temp.getSiguiente() == null){
+                break;
+            }else{
+                temp = temp.getSiguiente();
+            }
+        }
+        return temp;
     }
 
     @Override
     public int contarNodos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int contador = 0;
+        NodoLibros temp = cabeza;
+        while(temp != null){
+            contador++;
+            temp = temp.getSiguiente();
+        }
+        return contador;
     }
 
     @Override
     public boolean verificarCodigo(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoLibros temp = cabeza;
+        while(temp != null){
+            if(temp.getLibros().getCodigo() == codigo){
+                return true;
+            }else{
+                temp = temp.getSiguiente();
+            }
+        }
+        return false;
     }
 
     @Override
     public void agregarNodo(NodoLibros nodo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(cabeza == null){
+            setCabeza(nodo);
+        }else{
+            ultimo().setSiguiente(nodo);
+        }
     }
 
     @Override
-    public NodoLibros buscarPorTitulo(String titulo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public NodoLibros buscar(String titulo) {
+        NodoLibros temp = cabeza;
+        while(temp != null){
+            if(temp.getLibros().getTitulo().equals(titulo)){
+                break;
+            }else{
+                temp = temp.getSiguiente();
+            }
+        }
+        return temp;
     }
 
     @Override
-    public NodoLibros buscarPorCodigo(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public NodoLibros buscar(int codigo) {
+        NodoLibros temp = cabeza;
+        while(temp != null){
+            if(temp.getLibros().getCodigo() == codigo){
+                break;
+            }else{
+                temp = temp.getSiguiente();
+            }
+        }
+        return temp;
     }
 
     @Override
     public void eliminarNodo(NodoLibros nodo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoLibros anterior;
+        if(nodo == cabeza){
+            cabeza = cabeza.getSiguiente();
+        }else{
+            anterior = cabeza;
+            while(anterior.getSiguiente() != nodo){
+                anterior = anterior.getSiguiente();
+            }
+            anterior.setSiguiente(nodo.getSiguiente());
+        }
+        nodo.setSiguiente(null);
     }
 
     @Override
     public void eliminarLista() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        while(cabeza != null){
+            eliminarNodo(cabeza);
+        }
     }
 
     @Override
     public void cambiar(NodoLibros nodo1, NodoLibros nodo2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoLibros temp = new NodoLibros();
+        temp.copiarNodo(nodo1);
+        nodo1.copiarNodo(nodo2);
+        nodo2.copiarNodo(temp);
     }
 
     @Override
     public void ordenarListTitulos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoLibros ni;
+        NodoLibros nj;
+        ni = cabeza;
+        while(ni != null){
+            nj = ni.getSiguiente();
+            while(nj != null){
+                if(ni.getLibros().getTitulo().compareTo(nj.getLibros().getTitulo()) > 0){
+                    cambiar(ni, nj);
+                }
+                nj = nj.getSiguiente();
+            }
+            ni = ni.getSiguiente();
+        }
     }
 
     @Override
     public void ordenarListCodigos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoLibros ni;
+        NodoLibros nj;
+        ni = cabeza;
+        while(ni != null){
+            nj = ni.getSiguiente();
+            while(nj != null){
+                if(ni.getLibros().getCodigo() > nj.getLibros().getCodigo()){
+                    cambiar(ni, nj);
+                }
+                nj = nj.getSiguiente();
+            }
+            ni = ni.getSiguiente();
+        }
     }
 
-        
 }

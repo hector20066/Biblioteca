@@ -4,8 +4,6 @@
  */
 package controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.daoImplementaciones.DAOListPersonasImpl;
 import modelo.daoInterfaces.DAOListaPersonas;
@@ -17,7 +15,7 @@ import vistas.RegistrarUsuario;
  *
  * @author Mi PC
  */
-public class ControladorRegistrarUsuarios implements ActionListener{
+public class ControladorRegistrarUsuarios{
     
     private RegistrarUsuario registrarUsuarios;
     DAOListaPersonas listaPersonas = DAOListPersonasImpl.getListaPersonas();
@@ -25,23 +23,15 @@ public class ControladorRegistrarUsuarios implements ActionListener{
     public ControladorRegistrarUsuarios(RegistrarUsuario registrarUsuarios){
         this.registrarUsuarios = registrarUsuarios;
 
-        this.registrarUsuarios.getBtn_aceptar().addActionListener(this);
-        this.registrarUsuarios.getBtn_guardar().addActionListener(this);
-
         cargarDatos();
+        conectarEventos();
+    }
+
+    private void conectarEventos(){
+        registrarUsuarios.setControladorGuardar(e -> guardar());
+        registrarUsuarios.setControladorAceptar(e -> aceptar());
     }
     
-    @Override
-    public void actionPerformed(ActionEvent evento){
-        if (evento.getSource() == registrarUsuarios.getBtn_aceptar()) {
-            aceptar();
-        }else{
-            if(evento.getSource() == registrarUsuarios.getBtn_guardar()){
-                guardar();
-            }
-        }
-    }
-
     private void llenar(NodoPersonas nodo){
         String nombre = registrarUsuarios.getTxt_nombre().getText();
         int identificacion = Integer.parseInt(registrarUsuarios.getTxt_identificacion().getText());
@@ -69,6 +59,13 @@ public class ControladorRegistrarUsuarios implements ActionListener{
         }
     }
 
+    private void limpiarCampos(){
+        registrarUsuarios.getTxt_identificacion().setText("");
+        registrarUsuarios.getTxt_identificacionOpciones().setText("");
+        registrarUsuarios.getTxt_nombre().setText("");
+        registrarUsuarios.getTxt_telefono().setText("");
+    }
+
     public void cargarDatos(){
         NodoPersonas temp = listaPersonas.getCabeza();
         registrarUsuarios.getModelo().setRowCount(0);
@@ -94,7 +91,7 @@ public class ControladorRegistrarUsuarios implements ActionListener{
             listaPersonas.agregarNodo(nodo);
             cargarDatos();
             JOptionPane.showMessageDialog(null, "Los datos del usuario han sido guardados correctamente", null, JOptionPane.INFORMATION_MESSAGE);
-            registrarUsuarios.limpiarCampos();
+            limpiarCampos();
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error al guardar los datos.", null, JOptionPane.ERROR_MESSAGE);

@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[]args){
         //Se carga el tema FlatLaf
         try{
-            //Se usa el tema FlatLightLaf
+            //Se usa el tema FlatIntelliJLaf
             FlatIntelliJLaf.setup();
             
             // Otros temas de FlatLaf
@@ -29,26 +29,7 @@ public class Main {
             System.out.println("Fallo al cargar FlatLat");
         }
         
-        //Instancias de las vistas del programa
-        //Intancia de la vista Principal (Biblioteca)
-        Biblioteca vista = new Biblioteca();
-        vista.setVisible(true);
-        vista.setLocationRelativeTo(null);
-        vista.setResizable(false);
-
-        //Intancias de las vistas del programa
-        PrestamosDevoluciones prestamosDevoluciones = new PrestamosDevoluciones();
-        RegistrarLibros registrarLibros = new RegistrarLibros();
-        RegistrarUsuario registrarUsuarios = new RegistrarUsuario();
-        RegistroPrestamos registroPrestamos = new RegistroPrestamos();
-
-        //Instancia del controlador RegistroPrestamos, se usa para actualizar la informacion
-        ControladorRegistroPrestamos controladorRegistroPrestamos = new ControladorRegistroPrestamos(registroPrestamos);
-        //Se crean los controladores del programa
-        new ControladorBiblioteca(vista, prestamosDevoluciones, registrarUsuarios, registrarLibros, registroPrestamos, controladorRegistroPrestamos);
-        new ControladorPrestamosDevoluciones(prestamosDevoluciones);
-        new ControladorRegistrarLibros(registrarLibros);
-        new ControladorRegistrarUsuarios(registrarUsuarios);
-        
+        //Se inicia la aplicacion a traves del coordinador, que es el encargado de conectar los controladores con sus vistas, e iniciar la vista principal
+        new Coordinador().iniciarAplicacion();
     }
 }

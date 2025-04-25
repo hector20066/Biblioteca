@@ -4,15 +4,13 @@
  */
 package controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import vistas.*;
 
 /**
  *
  * @author Mi PC
  */
-public class ControladorBiblioteca implements ActionListener{
+public class ControladorBiblioteca{
     
     private Biblioteca biblioteca;
     private PrestamosDevoluciones prestamosDevoluciones;
@@ -28,41 +26,42 @@ public class ControladorBiblioteca implements ActionListener{
         this.registrarLibros = registrarLibros;
         this.registroPrestamos = registroPrestamos;
         this.controladorRegistroPrestamos = controladorRegistroPrestamos;
-        
-        this.biblioteca.getBtn_inicio().addActionListener(this);
-        this.biblioteca.getBtn_prestamosDevoluciones().addActionListener(this);
-        this.biblioteca.getBtn_registrarLibros().addActionListener(this);
-        this.biblioteca.getBtn_registrarUsuarios().addActionListener(this);
-        this.biblioteca.getBtn_registroPrestamos().addActionListener(this);
-        this.biblioteca.getBtn_salir().addActionListener(this);
+
+        conectarEventos();
     }
-    
-    @Override
-    public void actionPerformed(ActionEvent evento){
-        if(evento.getSource() == biblioteca.getBtn_inicio()){
-            biblioteca.cambioPaneles(new Inicio());
-        }else{
-            if(evento.getSource() == biblioteca.getBtn_prestamosDevoluciones()){
-                biblioteca.cambioPaneles(prestamosDevoluciones);
-            }else{
-                if (evento.getSource() == biblioteca.getBtn_registrarLibros()) {
-                    biblioteca.cambioPaneles(registrarLibros);
-                }else{
-                    if (evento.getSource() == biblioteca.getBtn_registrarUsuarios()) {
-                        biblioteca.cambioPaneles(registrarUsuarios);
-                    }else{
-                        if(evento.getSource() == biblioteca.getBtn_registroPrestamos()){
-                            controladorRegistroPrestamos.actualizarTabla();
-                            biblioteca.cambioPaneles(registroPrestamos);
-                        }else{
-                            if(evento.getSource() == biblioteca.getBtn_salir()){
-                                System.exit(0);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+
+    private void conectarEventos(){
+        biblioteca.setControlInicio(e -> inicio());
+        biblioteca.setControlRegistrarUsuarios(e -> panelRegistrarUsuarios());
+        biblioteca.setControlRegistrarLibros(e -> panelRegistrarLibros());
+        biblioteca.setControlPrestamosDevoluciones(e -> panelPrestamosDevoluciones());
+        biblioteca.setControlRegistroPrestamos(e -> panelRegistroPrestamos());
+        biblioteca.setControlSalir(e -> salir());
+    }
+
+    private void inicio(){
+        biblioteca.cambioPaneles(new Inicio());
+    }
+
+    private void panelRegistrarUsuarios(){
+        biblioteca.cambioPaneles(registrarUsuarios);
+    }
+
+    private void panelRegistrarLibros(){
+        biblioteca.cambioPaneles(registrarLibros);
+    }
+
+    private void panelPrestamosDevoluciones(){
+        biblioteca.cambioPaneles(prestamosDevoluciones);
+    }
+
+    private void panelRegistroPrestamos(){
+        controladorRegistroPrestamos.actualizarTabla();
+        biblioteca.cambioPaneles(registroPrestamos);
+    }
+
+    private void salir(){
+        System.exit(0);
     }
     
 }

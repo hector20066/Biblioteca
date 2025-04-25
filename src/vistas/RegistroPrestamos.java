@@ -4,6 +4,7 @@
  */
 package vistas;
 
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -149,12 +150,16 @@ public class RegistroPrestamos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getBtn_aceptar(){
-        return btn_aceptar;
+    public void setControladorAceptar(ActionListener action){
+        btn_aceptar.addActionListener(action);
     }
 
     public JComboBox getCbo_opciones(){
         return cbo_opciones;
+    }
+
+    public void setControladorMostrarPrestamos(ActionListener action){
+        cbo_mostrarPrestamos.addActionListener(action);
     }
 
     public JComboBox getCbo_mostrarPrestamos(){
@@ -168,8 +173,7 @@ public class RegistroPrestamos extends javax.swing.JPanel {
     public DefaultTableModel getModelo(){
         return modelo;
     }
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_aceptar;
     private javax.swing.JComboBox<String> cbo_mostrarPrestamos;

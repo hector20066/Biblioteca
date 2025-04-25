@@ -4,8 +4,6 @@
  */
 package controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.daoImplementaciones.DAOListLibrosImpl;
 import modelo.daoInterfaces.DAOListaLibros;
@@ -17,7 +15,7 @@ import vistas.RegistrarLibros;
  *
  * @author Mi PC
  */
-public class ControladorRegistrarLibros implements ActionListener{
+public class ControladorRegistrarLibros{
     
     private RegistrarLibros registrarLibros;
     
@@ -26,21 +24,13 @@ public class ControladorRegistrarLibros implements ActionListener{
     public ControladorRegistrarLibros(RegistrarLibros registrarLibros){
         this.registrarLibros = registrarLibros;
         
-        this.registrarLibros.getBtn_aceptar().addActionListener(this);
-        this.registrarLibros.getBtn_guardar().addActionListener(this);
-        
         cargarDatos();
+        conectarEventos();
     }
     
-    @Override
-    public void actionPerformed(ActionEvent evento){
-        if(evento.getSource() == registrarLibros.getBtn_aceptar()){
-            aceptar();
-        }else{
-            if(evento.getSource() == registrarLibros.getBtn_guardar()){
-                guardar();
-            }
-        }
+    private void conectarEventos(){
+        registrarLibros.setControladorAceptar(e -> aceptar());
+        registrarLibros.setControladorGuardar(e -> guardar());
     }
     
     private void llenar(NodoLibros nodo){
@@ -72,6 +62,15 @@ public class ControladorRegistrarLibros implements ActionListener{
             nodo = nodo.getSiguiente();
         }
     }
+
+    private void limpiarCampos(){
+        registrarLibros.getTxt_autor().setText("");
+        registrarLibros.getTxt_cantDisponible().setText("");
+        registrarLibros.getTxt_codigo().setText("");
+        registrarLibros.getTxt_codigoOpciones().setText("");
+        registrarLibros.getTxt_titulo().setText("");
+        registrarLibros.getTxt_autor().setText("");
+    }
     
     private void guardar(){
         try{
@@ -85,7 +84,7 @@ public class ControladorRegistrarLibros implements ActionListener{
                 listaLibros.ordenarListCodigos();
                 cargarDatos();
                 JOptionPane.showMessageDialog(null, "Se ha registrado el libro correctamente", null, JOptionPane.INFORMATION_MESSAGE);
-                registrarLibros.limpiarCampos();
+                limpiarCampos();
             }else{
                 JOptionPane.showMessageDialog(null, "Ya hay un libro registrado con este codigo", null, JOptionPane.ERROR_MESSAGE);
                 registrarLibros.getTxt_codigo().grabFocus();
@@ -108,7 +107,7 @@ public class ControladorRegistrarLibros implements ActionListener{
                 case 0:
                     codigoBuscar = Integer.parseInt(registrarLibros.getTxt_codigoOpciones().getText());
 
-                    nodo = listaLibros.buscarPorCodigo(codigoBuscar);
+                    nodo = listaLibros.buscar(codigoBuscar);
                     registrarLibros.getModelo().setRowCount(0);
 
                     if(nodo != null){
@@ -127,7 +126,7 @@ public class ControladorRegistrarLibros implements ActionListener{
                 case 1:
                     tituloBuscar = registrarLibros.getTxt_codigoOpciones().getText();
 
-                    nodo = listaLibros.buscarPorTitulo(tituloBuscar);
+                    nodo = listaLibros.buscar(tituloBuscar);
                     registrarLibros.getModelo().setRowCount(0);
 
                     if(nodo != null){
@@ -146,7 +145,7 @@ public class ControladorRegistrarLibros implements ActionListener{
                 case 2:
                     codigoBuscar = Integer.parseInt(registrarLibros.getTxt_codigoOpciones().getText());
                     
-                    nodo = listaLibros.buscarPorCodigo(codigoBuscar);
+                    nodo = listaLibros.buscar(codigoBuscar);
 
                     if(nodo != null){
                         listaLibros.eliminarNodo(nodo);

@@ -4,8 +4,6 @@
  */
 package controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import modelo.daoImplementaciones.DAOListPrestamosImpl;
@@ -17,7 +15,7 @@ import vistas.RegistroPrestamos;
  *
  * @author Mi PC
  */
-public class ControladorRegistroPrestamos implements ActionListener{
+public class ControladorRegistroPrestamos{
     
     private RegistroPrestamos registroPrestamos;
     DAOListaPrestamos listaPrestamos = DAOListPrestamosImpl.getListaPrestamos();
@@ -25,35 +23,32 @@ public class ControladorRegistroPrestamos implements ActionListener{
     public ControladorRegistroPrestamos(RegistroPrestamos registroPrestamos){
         this.registroPrestamos = registroPrestamos;
 
-        this.registroPrestamos.getBtn_aceptar().addActionListener(this);
-        this.registroPrestamos.getCbo_mostrarPrestamos().addActionListener(this);
-
         cargarPrestamos();
+        conectarEventos();
     }
-    
-    @Override
-    public void actionPerformed(ActionEvent evento){
-        if(evento.getSource() == registroPrestamos.getBtn_aceptar()){
-            aceptar();
-        }else{
-            if(evento.getSource() == registroPrestamos.getCbo_mostrarPrestamos()){
-                if(registroPrestamos.getCbo_mostrarPrestamos().getSelectedItem().equals("Mostrar pretamos activos")){
-                    cargarPrestamosActivos();
-                }else{
-                    if(registroPrestamos.getCbo_mostrarPrestamos().getSelectedItem().equals("Mostrar prestamos inactivos")){
-                        cargarPrestamosInactivos();
-                    }else{
-                        if(registroPrestamos.getCbo_mostrarPrestamos().getSelectedItem().equals("Mostrar registro completo")){
-                            cargarPrestamos();
-                        }
-                    }
-                }
-            }
-        }
+
+
+    private void conectarEventos(){
+        registroPrestamos.setControladorAceptar(e -> aceptar());
+        registroPrestamos.setControladorMostrarPrestamos(e -> mostrarPrestamos());
     }
 
     public void actualizarTabla(){
         cargarPrestamos();
+    }
+
+    private void mostrarPrestamos(){
+        if(registroPrestamos.getCbo_mostrarPrestamos().getSelectedItem().equals("Mostrar pretamos activos")){
+            cargarPrestamosActivos();
+        }else{
+            if(registroPrestamos.getCbo_mostrarPrestamos().getSelectedItem().equals("Mostrar prestamos inactivos")){
+                cargarPrestamosInactivos();
+            }else{
+                if(registroPrestamos.getCbo_mostrarPrestamos().getSelectedItem().equals("Mostrar registro completo")){
+                    cargarPrestamos();
+                }
+            }
+        }
     }
 
     private void cargarPrestamos(){

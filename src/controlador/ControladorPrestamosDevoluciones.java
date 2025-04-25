@@ -4,7 +4,6 @@
  */
 package controlador;
 
-import java.awt.event.*;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import modelo.daoImplementaciones.*;
@@ -17,7 +16,7 @@ import vistas.PrestamosDevoluciones;
  *
  * @author Mi PC
  */
-public class ControladorPrestamosDevoluciones implements ActionListener{
+public class ControladorPrestamosDevoluciones{
     
     private PrestamosDevoluciones prestamosDevoluciones;
 
@@ -28,19 +27,12 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
     public ControladorPrestamosDevoluciones(PrestamosDevoluciones prestamosDevoluciones){
         this.prestamosDevoluciones = prestamosDevoluciones;
 
-        this.prestamosDevoluciones.getBtn_prestar().addActionListener(this);
-        this.prestamosDevoluciones.getBtn_devolver().addActionListener(this);
+        conectarEventos();
     }
     
-    @Override
-    public void actionPerformed(ActionEvent evento){
-        if(evento.getSource() == prestamosDevoluciones.getBtn_prestar()){
-            prestar();
-        }else{
-            if(evento.getSource() == prestamosDevoluciones.getBtn_devolver()){
-                devolver();
-            }
-        }
+    private void conectarEventos(){
+        prestamosDevoluciones.setControladorPrestar(e -> prestar());
+        prestamosDevoluciones.setControladorDevolver(e -> devolver());
     }
 
     private void guardarInfoPrestamos(NodoPrestamos nodo){
@@ -66,7 +58,7 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
 
             //Instancia de los Nodos
             NodoPersonas nodoPersonas = listaPersona.buscar(idUsuario);
-            NodoLibros nodoLibros = listaLibros.buscarPorCodigo(codigoLibro);
+            NodoLibros nodoLibros = listaLibros.buscar(codigoLibro);
             NodoPrestamos nodoPrestamos;
             NodoPrestamos nodoVerificar = listaPrestamos.buscarPrestamos(codigoLibro, idUsuario);
             
@@ -133,7 +125,7 @@ public class ControladorPrestamosDevoluciones implements ActionListener{
             int idUsuario = Integer.parseInt(prestamosDevoluciones.getTxt_idUsuario().getText());
 
             NodoPersonas nodoPersonas = listaPersona.buscar(idUsuario);
-            NodoLibros nodoLibros = listaLibros.buscarPorCodigo(codigoLibro);
+            NodoLibros nodoLibros = listaLibros.buscar(codigoLibro);
             NodoPrestamos nodoPrestamos = listaPrestamos.buscarPrestamos(codigoLibro, idUsuario);
 
             if(nodoPrestamos != null && nodoPrestamos.getPrestamos().getActivo() == true){

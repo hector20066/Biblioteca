@@ -13,59 +13,135 @@ import modelo.nodos.NodoPersonas;
  */
 public class DAOListPersonasImpl implements DAOListaPersonas{
 
+    private NodoPersonas cabeza;
+    private static DAOListPersonasImpl listaPersonas;
+
+    public DAOListPersonasImpl(){
+        cabeza = null;
+        listaPersonas = null;
+    }
+
+    public static DAOListPersonasImpl getListaPersonas(){
+        if(listaPersonas == null){
+            listaPersonas = new DAOListPersonasImpl();
+        }
+        return listaPersonas;
+    }
+
     @Override
     public void setCabeza(NodoPersonas cabeza) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.cabeza = cabeza;
     }
 
     @Override
     public NodoPersonas getCabeza() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return cabeza;
     }
 
     @Override
     public NodoPersonas ultimo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoPersonas temp = cabeza;
+        while(temp != null){
+            if(temp.getSiguiente() == null){
+                break;
+            }else{
+                temp = temp.getSiguiente();
+            }
+        }
+        return temp;
     }
 
     @Override
     public int contarNodos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int contador = 0;
+        NodoPersonas temp = cabeza;
+        while(temp != null){
+            contador++;
+            temp = temp.getSiguiente();
+        }
+        return contador;
     }
 
     @Override
     public boolean verificarId(int identificacion) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoPersonas temp = cabeza;
+        while(temp != null){
+            if(temp.getPersona().getIdentificacion() == identificacion){
+                return true;
+            }else{
+                temp = temp.getSiguiente();
+            }
+        }
+        return false;
     }
 
     @Override
     public void agregarNodo(NodoPersonas nodo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(cabeza == null){
+            setCabeza(nodo);
+        }else{
+            ultimo().setSiguiente(nodo);
+        }
     }
 
     @Override
     public NodoPersonas buscar(int identificacion) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoPersonas temp = cabeza;
+        while(temp != null){
+            if(temp.getPersona().getIdentificacion() == identificacion){
+                break;
+            }else{
+                temp = temp.getSiguiente();
+            }
+        }
+        return temp;
     }
 
     @Override
     public void eliminarNodo(NodoPersonas nodo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoPersonas anterior;
+        if(nodo == cabeza){
+            cabeza = cabeza.getSiguiente();
+        }else{
+            anterior = cabeza;
+            while(anterior.getSiguiente() != nodo){
+                anterior = anterior.getSiguiente();
+            }
+            anterior.setSiguiente(nodo.getSiguiente());
+        }
+        nodo.setSiguiente(null);
     }
 
     @Override
     public void eliminarLista() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        while(cabeza != null){
+            eliminarNodo(cabeza);
+        }
     }
 
     @Override
     public void cambiar(NodoPersonas nodo1, NodoPersonas nodo2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoPersonas temp = new NodoPersonas();
+        temp.copiarNodo(nodo1);
+        nodo1.copiarNodo(nodo2);
+        nodo2.copiarNodo(temp);
     }
 
     @Override
     public void ordenarLista() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NodoPersonas ni;
+        NodoPersonas nj;
+        ni = cabeza;
+        while(ni != null){
+            nj = ni.getSiguiente();
+            while(nj != null){
+                if(ni.getPersona().getIdentificacion() > nj.getPersona().getIdentificacion()){
+                    cambiar(ni, nj);
+                }
+                nj = nj.getSiguiente();
+            }
+            ni = ni.getSiguiente();
+        }
     }
     
 }

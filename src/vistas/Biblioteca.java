@@ -5,8 +5,8 @@
 package vistas;
 
 import java.awt.BorderLayout;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
 /**
  *
@@ -181,28 +181,28 @@ public class Biblioteca extends javax.swing.JFrame {
         jpl_contenedor.repaint();
     }
 
-    public JButton getBtn_inicio(){
-        return btn_inicio;
+    public void setControlInicio(ActionListener action){
+        btn_inicio.addActionListener(action);
     }
 
-    public JButton getBtn_prestamosDevoluciones(){
-        return btn_prestamosDevoluciones;
+    public void setControlPrestamosDevoluciones(ActionListener action){
+        btn_prestamosDevoluciones.addActionListener(action);
     }
 
-    public JButton getBtn_registrarLibros(){
-        return btn_registrarLibros;
+    public void setControlRegistrarLibros(ActionListener action){
+        btn_registrarLibros.addActionListener(action);
     }
 
-    public JButton getBtn_registrarUsuarios(){
-        return btn_registrarUsuarios;
+    public void setControlRegistrarUsuarios(ActionListener action){
+        btn_registrarUsuarios.addActionListener(action);
     }
 
-    public JButton getBtn_registroPrestamos(){
-        return btn_registroPrestamos;
+    public void setControlRegistroPrestamos(ActionListener action){
+        btn_registroPrestamos.addActionListener(action);
     }
 
-    public JButton getBtn_salir(){
-        return btn_salir;
+    public void setControlSalir(ActionListener action){
+        btn_salir.addActionListener(action);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
