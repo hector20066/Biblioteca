@@ -7,7 +7,10 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import modelo.*;
+import modelo.daoImplementaciones.DAOListPersonasImpl;
+import modelo.daoInterfaces.DAOListaPersonas;
+import modelo.dominio.*;
+import modelo.nodos.NodoPersonas;
 import vistas.RegistrarUsuario;
 
 /**
@@ -45,19 +48,19 @@ public class ControladorRegistrarUsuarios implements ActionListener{
         String telefono = registrarUsuarios.getTxt_telefono().getText();
 
         if(registrarUsuarios.getCbo_tipoUsuario().getSelectedItem().equals("Estudiante")){
-            Persona estudiante = new Estudiante();
+            Personas estudiante = new Estudiantes();
 
             estudiante.setPersona(nombre, identificacion, telefono);
             nodo.setPersona(estudiante);
         }else{
             if(registrarUsuarios.getCbo_tipoUsuario().getSelectedItem().equals("Docente")){
-                Persona docente = new Docente();
+                Personas docente = new Docentes();
 
                 docente.setPersona(nombre, identificacion, telefono);
                 nodo.setPersona(docente);
             }else{
                 if(registrarUsuarios.getCbo_tipoUsuario().getSelectedItem().equals("Administrativo")){
-                    Persona administrativo = new Administrativo();
+                    Personas administrativo = new Administrativos();
 
                     administrativo.setPersona(nombre, identificacion, telefono);
                     nodo.setPersona(administrativo);

@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import modelo.*;
+import modelo.daoImplementaciones.DAOListPrestamosImpl;
+import modelo.daoInterfaces.DAOListaPrestamos;
+import modelo.nodos.NodoPrestamos;
 import vistas.RegistroPrestamos;
 
 /**

@@ -7,7 +7,10 @@ package controlador;
 import java.awt.event.*;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import modelo.*;
+import modelo.daoImplementaciones.*;
+import modelo.daoInterfaces.*;
+import modelo.dominio.*;
+import modelo.nodos.*;
 import vistas.PrestamosDevoluciones;
 
 /**

@@ -11,7 +11,6 @@ package modelo;
 public interface DAOListaLibros {
     
     //Metodos necesarios para el manejo de la informacion de los libros
-    
     public void setCabeza(NodoLibros cabeza);
     public NodoLibros getCabeza();
     public NodoLibros ultimo();

@@ -8,6 +8,14 @@ package modelo.dominio;
  *
  * @author Mi PC
  */
-public class Administrativos {
+public class Administrativos extends Personas{
     
+    public Administrativos(){
+        super();
+    }
+
+    @Override
+    public String getTipoPersona() {
+        return "Administrativo";
+    }
 }
