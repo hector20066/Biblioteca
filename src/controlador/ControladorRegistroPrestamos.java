@@ -208,6 +208,7 @@ public class ControladorRegistroPrestamos{
                     if(nodo != null){
                         listaPrestamos.eliminarNodo(nodo);
                         cargarPrestamos();
+                        JOptionPane.showMessageDialog(null, "Se ha eliminado el prestamo", null, JOptionPane.INFORMATION_MESSAGE);
                     }else{
                         JOptionPane.showMessageDialog(null, "No se ha encontrado el prestamo con este codigo", null, JOptionPane.ERROR_MESSAGE);
                         registroPrestamos.getTxt_codigo_idUsuario().grabFocus();

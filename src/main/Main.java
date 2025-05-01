@@ -6,7 +6,6 @@ package main;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import controlador.*;
-import vistas.*;
 
 /**
  *
